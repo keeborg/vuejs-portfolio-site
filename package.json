@@ -1,5 +1,5 @@
 {
-  "name": "ls-advanced-boilerplate",
+  "name": "ivan-portfolio-site",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "reg": "node reg-util.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ivan Kushchev",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
