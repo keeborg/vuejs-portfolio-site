@@ -1,0 +1,10 @@
+.review-item
+    +icon("quote", "review-item__quote-icon")
+    .review-item__card
+        .review-item__text
+            p #{author[3]}
+        .review-item__author
+            +image(author[0], "avatar review-item__avatar")
+            .review-item__author-info
+                .review-item__author-name #{author[1]}
+                .review-item__author-position #{author[2]}
