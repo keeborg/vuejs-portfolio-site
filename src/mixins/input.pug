@@ -6,7 +6,7 @@ mixin input(type, params)
             if type == "text"
                 input(
                     type="text"
-                    placeholder=!params.value ? params.pholder : " df"
+                    placeholder=params.pholder
                     value=params.value
                     class=params.className
                 ).input__text-type.input
