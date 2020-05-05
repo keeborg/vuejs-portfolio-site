@@ -3,11 +3,15 @@
     .slider__window
       .slider__current-item
         +image("content/1.jpg")
-        .slider__preview-wrapper
-          +image("content/3.jpg", "slider__preview")
-          +image("content/2.jpg", "slider__preview")
-          +image("content/5.jpg", "slider__preview")
-          +image("content/1.jpg", "slider__preview active")
+        ul.slider__preview-wrapper
+          li.slider__preview
+            +image("content/3.jpg")
+          li.slider__preview
+            +image("content/2.jpg", "slider__preview")
+          li.slider__preview
+            +image("content/5.jpg", "slider__preview")
+          li.slider__preview
+            +image("content/1.jpg", "slider__preview active")
     .slider__buttons
       a.up-btn
         +icon("arrow-down", "arrow-up")

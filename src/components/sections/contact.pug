@@ -4,9 +4,9 @@ section#contact.contact
       h2.contact__title Связаться со мной
       .contact__form
         .form__item.text.name-input
-          +input("text", {title: "Введите ваше имя", name: "name", pholder: "Имя", icon: "user", value: "Ковальчук Дмитрий"})
+          +input("text", {title: "Введите ваше имя", name: "name", pholder: "Имя", icon: "user"})
         .form__item.text.email-input
-          +input("text", {title: "Введите ваш email", name: "email", pholder: "E-mail", icon: "envelope", value: "loftschool@study.com"})
+          +input("text", {title: "Введите ваш email", name: "email", pholder: "E-mail", icon: "envelope"})
         .form__item.textarea.comment-input
-          +input("textarea", {title: "Сообщение к письму", name: "comment", pholder: "Комментарий", icon: "message", value: "Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса"})
+          +input("textarea", {title: "Сообщение к письму", name: "comment", pholder: "Комментарий", icon: "message"})
         button(type="button").submit-btn Отправить
