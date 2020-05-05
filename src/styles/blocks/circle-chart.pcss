@@ -1,0 +1,23 @@
+.circle-chart {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin-right: 40px;
+    &:last-child {
+        margin: 0;
+    }
+    &__title {
+        font-size: 18px;
+        font-weight: 700;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    circle:nth-child(2) {
+        transform: rotate(180deg);
+        transform-origin: 50% 50%;
+    }
+}

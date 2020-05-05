@@ -1,0 +1,20 @@
+.slider
+  .slider__main
+    .slider__window
+      .slider__current-item
+        +image("content/1.jpg")
+        ul.slider__preview-wrapper
+          li.slider__preview
+            +image("content/3.jpg")
+          li.slider__preview
+            +image("content/2.jpg", "slider__preview")
+          li.slider__preview
+            +image("content/5.jpg", "slider__preview")
+          li.slider__preview
+            +image("content/1.jpg", "slider__preview active")
+    .slider__buttons
+      a.up-btn
+        +icon("arrow-down", "arrow-up")
+      a.down-btn
+        +icon("arrow-down", "arrow-down")
+  .slider__current-item-number 4

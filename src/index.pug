@@ -1,4 +1,6 @@
-include ./mixins.pug
+include ./mixins/mixins.pug
+include ./mixins/circleChart.pug
+include ./mixins/input.pug
 
 <!DOCTYPE html>
 html(lang="en")
@@ -9,7 +11,15 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+      .welcome-section
+        .welcome-section-parallax
+        include components/sections/hero
+        include components/sections/about
+      include components/sections/skills
+      include components/sections/portfolio
+      .last-sections
+        .last-sections-parallax
+        include components/sections/reviews
+        include components/sections/contact
+      include components/layout/footer
+

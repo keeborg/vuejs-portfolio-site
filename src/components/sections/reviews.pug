@@ -1,0 +1,21 @@
+section#reviews.reviews
+  .triangles.reviews__triangles
+    svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item.triangle
+      polygon(points="0,0 1000,0 1000,50")
+    svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__item.triangle
+      polygon(points="0,0 1000,0 0,50")
+
+  .container
+    .reviews__wrapper
+      .reviews__header
+        h2.reviews__title Что обо мне говорят
+        .reviews__buttons
+          a.circle-btn
+            +icon("arrow-down", "left-arrow")
+          a.circle-btn
+            +icon("arrow-down", "right-arrow")
+      .reviews__content
+        - var author = ["content/review_avatar1.png", "Ковальчук Дмитрий", "Основатель Loftschool", "Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!"];
+        include ../blocks/review_item
+        - var author = ["content/review_avatar2.png", "Владимир Сабанцев", "Преподаватель", "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах"];
+        include ../blocks/review_item

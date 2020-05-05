@@ -1,0 +1,20 @@
+mixin input(type, params)
+    .input__wrapper
+        .input__title #{params.title}
+        .input__block
+            +icon(params.icon, "input__icon")
+            if type == "text"
+                input(
+                    type="text"
+                    placeholder=params.pholder
+                    value=params.value
+                    class=params.className
+                ).input__text-type.input
+            else if type == "textarea"
+                textarea(
+                    type="textarea"
+                    rows="2"
+                    name=params.name
+                    placeholder=params.pholder
+                    class=params.className
+                ).input__textarea-type.input #{params.value}
