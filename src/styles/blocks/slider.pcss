@@ -1,11 +1,45 @@
 .slider {
-    width: 1133px;
+    max-width: 1133px;
     position: relative;
+    margin-right: 140px;
+    &::after {
+        content: attr(data-slide);
+        position: absolute;
+        right: 0%;
+        top: 0;
+        transform: translate(140px, 10px);
+        font-size: 400px;
+        font-weight: 800;
+        line-height: 1;
+        color: #e6e6e6;
+        z-index: -1;
+        @include desktop {
+            font-size: 300px;
+        }
+        @include desktop-tabs {
+            font-size: 400px;
+        }
+        @include tablets {
+            font-size: 300px;
+        }
+        @include tabs-phones {
+            display: none;
+        }
+    }
+    @include tablets {
+        min-width: 500px;
+        margin-right: 100px;
+    }
+    @include tabs-phones {
+        min-width: 100%;
+        margin: 0;
+    }
 }
 
 .slider__main {
-    width: 977px;
+    max-width: 977px;
     overflow: hidden;
+    position: relative;
 }
 
 .slider__buttons {
@@ -26,7 +60,6 @@
             top: 50%;
             left: 50%;
             &.arrow-up {
-                opacity: 0.4;
                 transform: translate(-50%, -50%) rotate(-90deg);
                 transform-origin: 50% 50%;
             }
@@ -41,8 +74,21 @@
         }
         &:active {
             background-color: #1a1e26;
+            svg {
+                opacity: 0.6;
+            }
+        }
+
+        @include tabs-phones {
+            background-color: #2d3c4e;
         }
         
+    }
+    @include tabs-phones {
+        box-shadow: -15px 0px 65px rgba(0,0,0,0.6);
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 }
 
@@ -55,8 +101,8 @@
     bottom: 0;
     right: 0;
     max-width: 180px;
-    height: 400px;
-    box-shadow: -25px -10px 45px rgba(0,0,0,0.6);
+    max-height: 400px;
+    box-shadow: -25px 0px 45px rgba(0,0,0,0.6);
 }
 
 .slider__preview {
@@ -64,24 +110,16 @@
     transition: 0.4s;
     &:hover {
         cursor: pointer;
-        transform: translate(-30px)
+        transform: translate(-10px)
     }
     &.active {
         border: 3px solid #dc9322;
+    }
+    @include desktop {
+        max-height: 100px;
     }
 }
 
 .slider__window {
     overflow: hidden;
-}
-
-.slider__current-item-number {
-    display: inline;
-    position: absolute;
-    font-size: 400px;
-    font-weight: 800;
-    color: #e6e6e6;
-    top: -4%;
-    right: 0;
-    z-index: -1;
 }
