@@ -10,8 +10,20 @@
   }
 }
 
+@mixin desktop-tabs() {
+  @media screen and (max-width: $bp-desktop-tabs) {
+    @content;
+  }
+}
+
 @mixin tablets() {
   @media screen and (max-width: $bp-tablets) {
+    @content;
+  }
+}
+
+@mixin tabs-phones() {
+  @media screen and (max-width: $bp-tabs-phones) {
     @content;
   }
 }
