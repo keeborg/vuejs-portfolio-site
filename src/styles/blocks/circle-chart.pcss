@@ -1,23 +1,34 @@
 .circle-chart {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
+    max-width: 150px;
+    min-width: 130px;
     position: relative;
-    margin-right: 40px;
     &:last-child {
         margin: 0;
     }
     &__title {
         font-size: 18px;
         font-weight: 700;
+        padding: 10px;
         position: absolute;
         text-align: center;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        @include tabs-phones {
+            font-size: 16px;
+            opacity: 0.6;
+        }
     }
 
     circle:nth-child(2) {
         transform: rotate(180deg);
         transform-origin: 50% 50%;
+    }
+
+    @include tabs-phones {
+        max-width: 110px;
+        min-width: 100px;
     }
 }
