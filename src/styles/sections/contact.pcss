@@ -2,15 +2,28 @@
     position: relative;
     margin-top: 210px;
     padding-bottom: 140px;
+    @include tablets {
+        margin-top: 150px;
+    }
 }
 
 .contact__title {
     font-size: 36px;
     font-weight: 800;
     margin-bottom: 80px;
+    @include tablets {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 60px;
+    }
+    @include tabs-phones {
+        font-size: 24px;
+    }
 }
 
 .contact__form {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 880px;
     .text {
         width: 378px;
@@ -19,8 +32,25 @@
         width: 100%;
     }
 
-    .email-input {
-        float: right;
+    /* .email-input {
+        //margin-left: auto;
+        justify-self: end;
+    } */
+    .name-input {
+        margin-right: 20px;
+    }
+}
+
+.form__row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    @include tabs-phones {
+        flex-wrap: wrap;
+        .text {
+            margin-right: 0;
+            width: 100%;
+        }
     }
 }
 
@@ -43,5 +73,17 @@
     }
     &:active {
         background-image: linear-gradient(to left, #7100b3 0%, #3900b3 100%);
+    }
+    @include tablets {
+        margin: 0 auto;
+    }
+    @include tabs-phones {
+        padding: 30px 90px;
+    }
+}
+
+@include phones {
+    .input__icon {
+        display: none;
     }
 }
