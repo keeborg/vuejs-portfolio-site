@@ -1,3 +1,4 @@
+/* HIDDEN ONLY WHEN... */
 .desktop-hidden {
     @include desktop {
         display: none;
@@ -25,5 +26,36 @@
 .phones-hidden {
     @include phones {
         display: none;
+    }
+}
+
+/* VISIBLE ONLY WHEN... */
+.desktop-visible {
+    @include desktop {
+        display: initial;
+    }
+}
+
+.desktop-tabs-visible {
+    @include desktop-tabs {
+        display: initial;
+    }
+}
+
+.tablets-visible {
+    @include tablets {
+        display: initial;
+    }
+}
+
+.tabs-phones-visible {
+    @include tabs-phones {
+        display: initial;
+    }
+}
+
+.phones-visible {
+    @include phones {
+        display: initial;
     }
 }

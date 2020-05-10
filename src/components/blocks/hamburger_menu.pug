@@ -1,0 +1,17 @@
+button(type="button" id="hamburger-btn-open").hamburger-btn-open.desktop-tabs-visible
+    +icon("hamburger", "hamburger-btn-open__icon")
+.hamburger-menu
+    button(type="button" id="hamburger-btn-close").hamburger-btn-close
+        +icon("remove", "hamburger-btn-close__icon")
+    .hamburger-menu__wrapper
+        .hamburger-menu__content
+            - var items = [['Главная', 'main'], ['Обо мне', 'about'], ['Навыки', 'skills'], ['Работы', 'portfolio'], ['Отзывы', 'reviews'], ['Связаться', 'contact']];
+            ul.menu__list
+                each item in items
+                    li.menu__item
+                        a(href="#"+item[1]).menu__link #{item[0]}
+        .hamburger-menu__socials
+            - var socials = ['insta', 'vk', 'github'];
+            include ../blocks/socials
+
+.hamburger-menu__bg-layer

@@ -1,17 +1,9 @@
 header.header
   .header__logo
     .logo ИК
-  .header__nav
+  .header__nav.desktop-tabs-hidden
     nav.menu
-      - var items = [['Главная', 'main'], ['Обо мне', 'about'], ['Навыки', 'skills'], ['Работы', 'portfolio'], ['Отзывы', 'reviews'], ['Связаться', 'contact']];
-      ul.menu__list
-        each item in items
-          li.menu__item
-            a(href="#"+item[1]).menu__link #{item[0]}
-  .header__socials
-    - var socials = ['insta', 'vk', 'github'];
-    ul.socials
-      each social in socials
-        li.socials__item
-          a(href="#").socials__link
-            +icon(social, 'socials__icon')
+      include ../blocks/menu
+  .header__socials.tabs-phones-hidden
+    include ../blocks/socials
+  include ../blocks/hamburger_menu
