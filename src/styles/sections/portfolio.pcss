@@ -13,6 +13,10 @@
     @include tablets {
         font-size: 30px;
     }
+    @include tabs-phones {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
 }
 
 .portfolio__content {
@@ -47,11 +51,17 @@
         width: auto;
         margin-top: 15px;
     }
+    @include tabs-phones {
+        font-size: 24px;
+    }
 }
 
 .portfolio__desc-info {
     margin-top: 30px;
     line-height: 30px;
+    @include tabs-phones {
+        margin-top: 15px;
+    }
 }
 
 .portfolio__desc-link {
