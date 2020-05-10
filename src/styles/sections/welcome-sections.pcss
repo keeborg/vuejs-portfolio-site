@@ -1,3 +1,101 @@
-.welcome-section {
+.welcome-sections {
     position: relative;
+}
+
+.welcome-sections__parallax {
+    //background: url("../../images/parallax/mountain_baloon.jpg") no-repeat center center;
+    //background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 170vh;
+}
+
+.parallax__layer {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.sky {
+    width: 100%;
+    min-width: 1300px;
+    .parallax__image {
+        position: absolute;
+        width: 120%;
+        height: auto;
+    }
+}
+
+.baloon-prlx {
+    .parallax__image {
+        transform: translate(70vw, 38vh);
+        position: absolute;
+        width: 150px;
+    }
+}
+
+.cloud-prlx {
+    .parallax__image {
+        min-width: 1300px;
+        transform: translate(0, 40vh);
+        position: absolute;
+        width: 100%;
+    }
+}
+
+.mountain-prlx {
+    width: 100%;
+    min-width: 1300px;
+    .parallax__image {
+        transform: translate(0, 25vh);
+        position: absolute;
+        width: 100%;
+    }
+    
+}
+
+.man-prlx {
+    left: 0;
+    min-width: 1400px;
+    .parallax__image {
+        transform: translate(0, 55vh);
+        position: absolute;
+        left: 0;
+        width: 75%;
+        @include desktop-tabs {
+            transform: translate(-300px, 50vh);
+        }
+    }
+    
+    
+}
+
+.mountain1-prlx {
+    width: 160%;
+    right: 0;
+    min-width: 1800px;
+    .parallax__image {
+        transform: translate(0, 25vh);
+        margin-left: auto;
+        min-height: 100vh;
+    }
+    
+}
+
+.white-prlx {
+    min-width: 110%;
+    bottom:0;
+    .parallax__image {
+        position: absolute;
+        left: 0;
+        right:0;
+        bottom:0;
+        width: 100%;
+        min-width:1500px;
+        min-height:1000px;
+    }
+    
 }
