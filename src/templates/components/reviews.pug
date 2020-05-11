@@ -1,0 +1,31 @@
+script(type="text/x-template")#reviews-container 
+  .reviews__wrapper
+    .reviews__header
+      h2.reviews__title Что обо мне говорят
+      btns
+    carousel(
+      :perPageCustom="[[0, 1], [340, 1], [500, 2]]"
+      :navigateTo="4"
+    ).reviews__content
+      review-item(v-for="review in reviews" :reviewItem="review" :key="review.id")
+
+
+script(type="text/x-template")#reviews-item
+  slide.review-item  
+    +icon("quote", "review-item__quote-icon")
+    .review-item__card
+      .review-item__text
+        p {{reviewItem.text}}
+      .review-item__author
+        img(:src="reviewItem['author-pic']").avatar.review-item__avatar
+        .review-item__author-info
+          .review-item__author-name {{reviewItem['author-name']}}
+          .review-item__author-position {{reviewItem['author-occ']}}
+
+
+script(type="text/x-template")#reviews-slider__btns
+  .reviews__buttons
+    button.circle-btn
+      +icon("arrow-down", "left-arrow")
+    button.circle-btn
+      +icon("arrow-down", "right-arrow")

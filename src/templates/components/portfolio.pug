@@ -1,0 +1,65 @@
+script(type="text/x-template")#portfolio-container
+  .portfolio__content
+    slider(
+      :currentIndex="currentIndex"
+      :currentWork="currentWork"
+      :works="works"
+      @slide="changeSlide"  
+    )
+    info(:currentWork="currentWork")
+
+
+script(type="text/x-template")#portfolio-slider
+  .slider(:data-slide="currentIndex+1")
+    .slider__main
+      .slider__window
+        .slider__current-item
+          img(:src="currentWork.photo")
+          preview(
+            :works="reversedWorks"
+            :currentWork="currentWork"
+          )
+      btns(
+        :currentIndex="currentIndex"
+        :worksLength="works.length"
+        @slide="$emit('slide', $event)"
+      )
+
+
+script(type="text/x-template")#portfolio-slider__preview
+  ul.slider__preview-wrapper.tabs-phones-hidden
+    li.slider__preview(
+      v-for="work in works" 
+      :class="[{'desktop-hidden' : work.id === works.length}, {'active' : work.id === currentWork.id}]"
+    )
+      img(:src="work.photo")
+
+
+script(type="text/x-template")#portfolio-slider__btns
+  .slider__buttons
+    button(
+      :disabled="currentIndex === worksLength - 1"
+      @click.prevent="$emit('slide', 'next')"
+    ).up-btn
+      +icon("arrow-down", "arrow-up")
+    button(
+      :disabled="currentIndex === 0"
+      @click.prevent="$emit('slide', 'prev')"
+    ).down-btn
+      +icon("arrow-down", "arrow-down")
+
+
+script(type="text/x-template")#portfolio-info
+  .portfolio__desc
+    tags(:skills="currentWork.skills")
+    h3.portfolio__desc-title {{currentWork.title}}
+    .portfolio__desc-info {{currentWork.desc}}
+    a(:href="currentWork.link").portfolio__desc-link
+      +icon("link", "portfolio__desc-link-icon")
+      |Посмотреть сайт
+
+
+script(type="text/x-template")#portfolio-info__tags
+  ul.tag-list
+    li.tag(v-for="skill in parsedSkills") 
+      span {{skill.trim()}}
