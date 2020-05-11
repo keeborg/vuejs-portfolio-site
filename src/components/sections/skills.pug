@@ -11,15 +11,4 @@ section.skills
         .skills-card__desc
           h2#skills.skills-card__title Чем я могу быть полезен вам
           p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут всё классно и красиво!
-        .skills-card__skills-list
-          - 
-            var skills = [
-              ["Frontend", [["HTML5", 367.8], ["CSS3", 367.8], ["Javascript", 367.8], ["Jquery и Vue.js", 300.8]]],
-              ["Workflow", [["GIT", "150.8"], ["Terminal","250"], ["Gulp", 367.8], ["Webpack", 367.8]]]
-            ];
-          each skillCat in skills
-            .skills-category
-              h3.skills-category__name #{skillCat[0]}
-              .skills-category__list
-                each skill in skillCat[1]
-                  +circleChart(skill[0], skill[1])
+        #skills-component
