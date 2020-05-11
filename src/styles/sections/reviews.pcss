@@ -5,6 +5,9 @@
     &__wrapper {
         max-width: 1008px;
         margin-top: 165px;
+        @include tabs-phones {
+            margin-top: 0;
+        }
     }
 
     &__header {
@@ -42,13 +45,16 @@
     &__content {
         display: flex;
     }
+
+    @include tabs-phones {
+        margin-top: 40px;
+    }
 }
 
 
 .review-item {
     display: flex;
     align-items: start;
-    margin-right: 85px;
     &:last-child {
         margin-right: 0;
     }
@@ -114,10 +120,6 @@
     &__author-position {
         font-weight: bold;
         opacity: 0.3;
-    }
-
-    @include tablets {
-        margin-right: 45px;
     }
 
     @include tabs-phones {
