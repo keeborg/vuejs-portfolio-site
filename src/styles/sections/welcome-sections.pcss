@@ -3,14 +3,12 @@
 }
 
 .welcome-sections__parallax {
-    //background: url("../../images/parallax/mountain_baloon.jpg") no-repeat center center;
-    //background-size: cover;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     min-width: 100%;
-    min-height: 190vh;
+    height: 100vh;
 }
 
 .parallax__layer {
@@ -21,37 +19,38 @@
 
 .sky {
     width: 100%;
-    min-width: 1300px;
     .parallax__image {
-        position: absolute;
-        width: 120%;
         height: auto;
+    }
+    @include desktop-tabs {
+        width: 260%;
+        min-width: 900px;
     }
 }
 
 .baloon-prlx {
+    right: -65%;
+    transform: translate(0, 49%);
     .parallax__image {
-        transform: translate(70vw, 38vh);
-        position: absolute;
         width: 150px;
     }
 }
 
 .cloud-prlx {
+    transform: translate(0, 43%);
     .parallax__image {
-        min-width: 1300px;
-        transform: translate(0, 40vh);
-        position: absolute;
         width: 100%;
+    }
+    @include tablets {
+        width: 110%;
     }
 }
 
 .mountain-prlx {
     width: 100%;
+    transform: translate(0, 21%);
     min-width: 1300px;
     .parallax__image {
-        transform: translate(0, 25vh);
-        position: absolute;
         width: 100%;
     }
     
@@ -59,43 +58,51 @@
 
 .man-prlx {
     left: 0;
+    transform: translate(0, 68%);
     min-width: 1400px;
     .parallax__image {
-        transform: translate(0, 55vh);
-        position: absolute;
-        left: 0;
         width: 75%;
-        @include desktop-tabs {
-            transform: translate(-300px, 50vh);
-        }
     }
-    
-    
+    @include desktop-tabs {
+        transform: translate(-300px, 50vh);
+    }
 }
 
 .mountain1-prlx {
     width: 160%;
     right: 0;
     min-width: 1800px;
+    transform: translate(0, 60%);
     .parallax__image {
-        transform: translate(0, 25vh);
         margin-left: auto;
         min-height: 100vh;
     }
-    
+    @include desktop {
+        transform-origin: 0 -35%;
+        transform: translate(0, 50%);
+    }
+    @include desktop-tabs {
+        width: 100%;
+    }
 }
 
 .white-prlx {
-    min-width: 110%;
-    bottom:0;
+    min-width: 130%;
+    top: 75%;
     .parallax__image {
-        position: absolute;
-        left: 0;
-        right:0;
-        bottom:0;
         width: 100%;
-        min-width:1500px;
-        min-height:1000px;
+        min-width: 1500px;
     }
-    
+    @include desktop {
+        top: 85%;
+    }
+    @include desktop-tabs {
+        width: 100%;
+    }
+    @include tablets {
+        width: 280%;
+        .parallax__image {
+            height: 100vh;
+        }
+    }
 }

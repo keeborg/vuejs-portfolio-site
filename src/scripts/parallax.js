@@ -9,7 +9,8 @@ let windowWidth = getWindowWidth();
 const parallaxWelcome = document.querySelector('.welcome-sections__parallax');
 
 [parallaxWelcome].forEach((parallax) => {
-    let layers = parallax.querySelectorAll('.parallax__image');
+    let layers = parallax.querySelectorAll('.parallax__layer');
+    console.log(layers)
     
     function moveLayers(scrollValue) {
         layers.forEach((layer) => {
