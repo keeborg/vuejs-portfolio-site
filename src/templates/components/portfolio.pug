@@ -27,8 +27,8 @@ script(type="text/x-template")#portfolio-slider
 
 
 script(type="text/x-template")#portfolio-slider__preview
-  ul.slider__preview-wrapper.tabs-phones-hidden
-    li.slider__preview(
+  .slider__preview-wrapper.tabs-phones-hidden
+    button(type="button").slider__preview(
       v-for="work in works" 
       :class="[{'desktop-hidden' : work.id === works.length}, {'active' : work.id === currentWork.id}]"
     )
@@ -54,7 +54,7 @@ script(type="text/x-template")#portfolio-info
     tags(:skills="currentWork.skills")
     h3.portfolio__desc-title {{currentWork.title}}
     .portfolio__desc-info {{currentWork.desc}}
-    a(:href="currentWork.link").portfolio__desc-link
+    a(:href="currentWork.link" target="_blank").portfolio__desc-link
       +icon("link", "portfolio__desc-link-icon")
       |Посмотреть сайт
 

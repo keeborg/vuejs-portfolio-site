@@ -2,7 +2,7 @@ section#contact.contact
   .container
     .contact__wrapper
       h2.contact__title Связаться со мной
-      .contact__form
+      form.contact__form
         .form__row
           .form__item.text.name-input
             +input("text", {title: "Введите ваше имя", name: "name", pholder: "Имя", icon: "user"})
@@ -10,4 +10,4 @@ section#contact.contact
             +input("text", {title: "Введите ваш email", name: "email", pholder: "E-mail", icon: "envelope"})
         .form__item.textarea.comment-input
           +input("textarea", {title: "Сообщение к письму", name: "comment", pholder: "Комментарий", icon: "message"})
-        button(type="button").submit-btn Отправить
+        button(type="submit").submit-btn Отправить
