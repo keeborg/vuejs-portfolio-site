@@ -2,12 +2,107 @@
     position: relative;
 }
 
-.last-sections-parallax {
-    background: url("../../images/parallax/budda.jpg") no-repeat center center;
-    background-size: cover;
+.last-sections__parallax {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     min-height: 100%;
+    .tabs-phones-bg {
+        min-width: 740%;
+        transform: translate(-20%, 0);
+    }
+}
+
+.parallax__layer {
+    position: absolute;
+    min-width: 100%; 
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.bg-clouds,
+.blue-bg {
+    .parallax__image {
+        min-width: 260%;
+        @include desktop {
+            min-width: 360%;
+        }
+        @include tablets {
+            min-width: 475%;
+        }
+        @include tabs-phones {
+            min-height: 2000px;
+        }
+    }
+}
+
+.rocks {
+    transform: translate(-20%, 30%);
+    .parallax__image {
+        min-width: 190%;
+        @include desktop {
+            min-width: 3200px;
+        }
+        @include tablets {
+            min-width: 3000px;
+        }
+    }
+}
+
+.bottom-clouds {
+    transform: translate(-20%, 45%);
+    .parallax__image {
+        min-width: 210%;
+        @include desktop {
+            min-width: 300%;
+        }
+        @include tablets {
+            min-width: 305%;
+        }
+        @include tabs-phones {
+            min-height: 2000px;
+        }
+    }
+}
+
+.bottom-clouds-2 {
+    transform: translate(18%, 40%);
+    .parallax__image {
+        min-height: 1000px;
+        @include desktop {
+            min-width: 230%;
+        }
+        @include tablets {
+            min-width: 305%;
+        }
+        @include tabs-phones {
+            min-height: 2000px;
+        }
+    }
+}
+
+.bottom-clouds-3 {
+    transform: translate(0, 60%);
+    .parallax__image {
+        min-width: 130%;
+        min-height: 700px;
+        @include desktop {
+            min-width: 230%;
+        }
+        @include tablets {
+            min-width: 305%;
+        }
+        @include tabs-phones {
+            min-height: 2000px;
+        }
+    }
+}
+
+.budda {
+    left: 60%;
+    transform: translate(0, 30%);
+    @include desktop {
+        left: 75%;
+    }
 }

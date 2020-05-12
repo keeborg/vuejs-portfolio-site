@@ -1,16 +1,20 @@
-const getWindowWidth = () => {
-    return document.querySelector('body').clientWidth;
-}
-
-window.addEventListener('resize', () => getWindowWidth());
-
-let windowWidth = getWindowWidth();
+let windowWidth = null;
+(() => {
+    const get = () => {
+        windowWidth = document.querySelector('body').clientWidth;
+    };
+    get();
+    window.addEventListener("resize", () => get());
+})();
 
 const parallaxWelcome = document.querySelector('.welcome-sections__parallax');
+const parallaxLast = document.querySelector('.last-sections__parallax');
 
-[parallaxWelcome].forEach((parallax) => {
-    let layers = parallax.querySelectorAll('.parallax__layer');
-    console.log(layers)
+[parallaxWelcome, parallaxLast].forEach((parallax) => {
+    const layers = parallax.querySelectorAll('.parallax__layer');
+    const parent = parallax.parentNode;
+    
+    const parentOffsetTop = parent.offsetTop;
     
     function moveLayers(scrollValue) {
         layers.forEach((layer) => {
@@ -39,9 +43,10 @@ const parallaxWelcome = document.querySelector('.welcome-sections__parallax');
     }
 
     window.addEventListener('scroll', e => {
-        
         const scrollValue = window.pageYOffset;
-        moveLayers(scrollValue);
+        if (windowWidth > 768 && scrollValue - parentOffsetTop >= 0) {
+            moveLayers(scrollValue - parentOffsetTop);
+        }
     })
 });
 
