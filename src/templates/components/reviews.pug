@@ -5,9 +5,10 @@ script(type="text/x-template")#reviews-container
       btns
     carousel(
       :perPageCustom="[[0, 1], [340, 1], [500, 2]]"
-      :navigateTo="4"
+      :paginationEnabled="false"
     ).reviews__content
-      review-item(v-for="review in reviews" :reviewItem="review" :key="review.id")
+      slide(v-for="review in reviews" :key="review.id")
+        review-item(:reviewItem="review")
 
 
 script(type="text/x-template")#reviews-item
