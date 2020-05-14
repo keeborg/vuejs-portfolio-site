@@ -2,17 +2,24 @@ script(type="text/x-template")#reviews-container
   .reviews__wrapper
     .reviews__header
       h2.reviews__title Что обо мне говорят
-      btns
+      btns(
+        @switchSlide="switchSlide"
+        :allowForward="allowForward"
+        :allowBackward="allowBackward"
+      )
     carousel(
       :perPageCustom="[[0, 1], [340, 1], [500, 2]]"
       :paginationEnabled="false"
+      :navigateTo="currentSlide"
+      ref="reviews-carousel"
+      @page-change="switchSlide('swipe')"
     ).reviews__content
       slide(v-for="review in reviews" :key="review.id")
         review-item(:reviewItem="review")
 
 
 script(type="text/x-template")#reviews-item
-  slide.review-item  
+  .review-item
     +icon("quote", "review-item__quote-icon")
     .review-item__card
       .review-item__text
@@ -26,7 +33,15 @@ script(type="text/x-template")#reviews-item
 
 script(type="text/x-template")#reviews-slider__btns
   .reviews__buttons
-    button.circle-btn
+    button(
+      type="button"
+      @click.prevent="$emit('switchSlide', 'prev')"
+      :disabled="!allowBackward"
+    ).circle-btn
       +icon("arrow-down", "left-arrow")
-    button.circle-btn
+    button(
+      type="button"
+      @click.prevent="$emit('switchSlide', 'next')"
+      :disabled="!allowForward"
+    ).circle-btn
       +icon("arrow-down", "right-arrow")

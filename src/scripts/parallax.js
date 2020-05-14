@@ -49,5 +49,3 @@ const parallaxLast = document.querySelector('.last-sections__parallax');
         }
     })
 });
-
-
