@@ -27,11 +27,11 @@
           .about-content.container
             .card-list
               .card
-                .card-header
+                form.card-header
                   .card-header-title
-                    input(type="text" placeholder="Название группы").category-input
+                    input(type="text" placeholder="Название группы" required).category-input
                   .control-btns
-                    button(type="button").save-category
+                    button(type="submit").save-category
                       SvgIcon(name="tick" className="save-category-icon")
                     button(type="button").edit-category-cancel
                       SvgIcon(name="remove" className="edit-category-cancel-icon")
@@ -40,21 +40,21 @@
                         button(type="button").remove-category
                           SvgIcon(name="trash" className="remove-category-icon")
                 .card-content
-                .card-footer
-                  input(type="text" placeholder="Новый навык").skill-input
+                form.card-footer
+                  input(type="text" placeholder="Новый навык" required).skill-input
                   .percent.input-wrapper
-                    input(type="number" placeholder="0" min="0" max="100").percent-input
+                    input(type="number" placeholder="0" min="0" max="100" required).percent-input
                     span.percent-sign %
-                  button(type="button").add-btn.medium.add-skill-btn
+                  button(type="submit").add-btn.medium.add-skill-btn
                     .circle-add-btn
                       SvgIcon(name="plus" className="add-btn-icon")
               
               .card
-                .card-header
+                form.card-header
                   .card-header-title
-                    input(type="text" placeholder="Название группы" value="Workflow").category-input
+                    input(type="text" placeholder="Название группы" value="Workflow" required).category-input
                   .control-btns
-                    button(type="button").save-category
+                    button(type="submit").save-category
                       SvgIcon(name="tick" className="save-category-icon")
                     button(type="button").edit-category-cancel
                       SvgIcon(name="remove" className="edit-category-cancel-icon")
@@ -115,21 +115,21 @@
                           SvgIcon(name="pencil" className="edit-skill-icon")
                         button(type="button").remove-skill
                           SvgIcon(name="trash" className="remove-skill-icon")
-                .card-footer
+                form.card-footer
                   input(type="text" placeholder="Новый навык" required).skill-input
                   .percent.input-wrapper
                     input(type="number" placeholder="0" min="0" max="100" required).percent-input
                     span.percent-sign %
-                  button(type="button").add-btn.medium.add-skill-btn
+                  button(type="submit").add-btn.medium.add-skill-btn
                     .circle-add-btn
                       SvgIcon(name="plus" className="add-btn-icon")
               
               .card
-                .card-header
+                form.card-header
                   .card-header-title
                     input(type="text" value="Frontend" readonly="readonly" placeholder="Название группы" required).category-input
                   .control-btns
-                    //- button(type="button").save-category
+                    //- button(type="submit").save-category
                     //-   SvgIcon(name="tick" className="save-category-icon")
                     //- button(type="button").edit-category-cancel
                     //-   SvgIcon(name="remove" className="edit-category-cancel-icon")
@@ -194,12 +194,12 @@
                           SvgIcon(name="pencil" className="edit-skill-icon")
                         button(type="button").remove-skill
                           SvgIcon(name="trash" className="remove-skill-icon")
-                .card-footer
+                form.card-footer
                   input(type="text" placeholder="Новый навык" required).skill-input
                   .percent.input-wrapper
                     input(type="number" placeholder="0" min="0" max="100" required).percent-input
                     span.percent-sign %
-                  button(type="button").add-btn.medium.add-skill-btn
+                  button(type="submit").add-btn.medium.add-skill-btn
                     .circle-add-btn
                       SvgIcon(name="plus" className="add-btn-icon")
       
@@ -627,7 +627,8 @@ input {
   }
 }
 
-.gradient-btn {
+.gradient-btn,
+.gradient-btn[type="submit"] {
   color: #fff;
   padding: 15px 45px;
   text-transform: uppercase;
@@ -647,6 +648,10 @@ input {
   &:hover {
     color: #000;
   }
+}
+
+button[type="submit"] {
+  background: transparent;
 }
 /*===== Buttons end =====*/
 
