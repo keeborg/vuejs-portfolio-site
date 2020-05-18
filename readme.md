@@ -1,5 +1,8 @@
 ФИО: Кущев Иван Александрович
+
 Дата прохождения курса: 27.04.2020 - 05.06.2020
+
+https://keeborg.github.io/kushchev-ls
 
 # Учебный шаблон проекта Portfolio
 
@@ -8,8 +11,8 @@
 
 ##  Чтобы развернуть проект необходимо:
 ```sh
-$ git clone git@github.com:loftschool/ls-advanced-portfolio.git
-$ cd ls-advanced-portfolio
+$ git clone git@github.com:loftschool/kushchev-ls.git
+$ cd kushchev-ls
 $ yarn
 ```
 
