@@ -1,0 +1,185 @@
+.about
+  .about-header.container
+    h1.title Блок "Обо мне"
+    button(type="button").add-btn.text
+      .circle-add-btn
+        SvgIcon(name="plus" className="add-btn-icon")
+      | Добавить группу
+  .about-content.container
+    .card-list
+      .card
+        form.card-header
+          .card-header-title
+            input(type="text" placeholder="Название группы" required).category-input
+          .control-btns
+            button(type="submit").save-category
+              SvgIcon(name="tick" className="save-category-icon")
+            button(type="button").edit-category-cancel
+              SvgIcon(name="remove" className="edit-category-cancel-icon")
+            //- button(type="button").edit-category
+              SvgIcon(name="pencil" className="edit-category-icon")
+                button(type="button").remove-category
+                  SvgIcon(name="trash" className="remove-category-icon")
+        .card-content
+        form.card-footer
+          input(type="text" placeholder="Новый навык" required).skill-input
+          .percent.input-wrapper
+            input(type="number" placeholder="0" min="0" max="100" required).percent-input
+            span.percent-sign %
+          button(type="submit").add-btn.medium.add-skill-btn
+            .circle-add-btn
+              SvgIcon(name="plus" className="add-btn-icon")
+      
+      .card
+        form.card-header
+          .card-header-title
+            input(type="text" placeholder="Название группы" value="Workflow" required).category-input
+          .control-btns
+            button(type="submit").save-category
+              SvgIcon(name="tick" className="save-category-icon")
+            button(type="button").edit-category-cancel
+              SvgIcon(name="remove" className="edit-category-cancel-icon")
+            //- button(type="button").edit-category
+              SvgIcon(name="pencil" className="edit-category-icon")
+              button(type="button").remove-category
+                SvgIcon(name="trash" className="remove-category-icon")
+        .card-content
+          table.skill-list
+            tr.skill-row
+              td.name
+                input(type="text" readonly="readonly" value="Git" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="100" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+            
+            tr.skill-row
+              td.name
+                input(type="text" readonly="readonly" value="Terminal" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="90" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+            
+            tr.skill-row
+              td.name
+                input(type="text" readonly="readonly" value="Gulp" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="80" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+            
+            tr.skill-row
+              td.name 
+                input(type="text" readonly="readonly" value="Webpack" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="85" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+        form.card-footer
+          input(type="text" placeholder="Новый навык" required).skill-input
+          .percent.input-wrapper
+            input(type="number" placeholder="0" min="0" max="100" required).percent-input
+            span.percent-sign %
+          button(type="submit").add-btn.medium.add-skill-btn
+            .circle-add-btn
+              SvgIcon(name="plus" className="add-btn-icon")
+      
+      .card
+        form.card-header
+          .card-header-title
+            input(type="text" value="Frontend" readonly="readonly" placeholder="Название группы" required).category-input
+          .control-btns
+            //- button(type="submit").save-category
+            //-   SvgIcon(name="tick" className="save-category-icon")
+            //- button(type="button").edit-category-cancel
+            //-   SvgIcon(name="remove" className="edit-category-cancel-icon")
+            button(type="button").edit-category
+              SvgIcon(name="pencil" className="edit-category-icon")
+            button(type="button").remove-category
+              SvgIcon(name="trash" className="remove-category-icon")
+        .card-content
+          table.skill-list
+            tr.skill-row
+              td.name
+                input(type="text" readonly="readonly" value="Html5" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="100" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+            
+            tr.skill-row
+              td.name
+                input(type="text" value="CSS" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="90" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                //- button(type="button").edit-skill
+                //-   SvgIcon(name="pencil" className="edit-skill-icon")
+                //- button(type="button").remove-skill
+                //-   SvgIcon(name="trash" className="remove-skill-icon")
+                button(type="button").save-skill
+                  SvgIcon(name="tick" className="save-skill-icon")
+                button(type="button").edit-skill-cancel
+                  SvgIcon(name="remove" className="edit-skill-cancel-icon")
+            
+            tr.skill-row
+              td.name
+                input(type="text" readonly="readonly" value="Javascript" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="85" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+            
+            tr.skill-row
+              td.name
+                input(type="text" readonly="readonly" value="Jquery & VueJS" placeholder="Название навыка" required).skill-input
+              td.percent-value
+                .percent.input-wrapper
+                  input(type="number" value="80" readonly="readonly" placeholder="0" min="0" max="100" required).percent-input
+                  span.percent-sign %
+              td.control-btns
+                button(type="button").edit-skill
+                  SvgIcon(name="pencil" className="edit-skill-icon")
+                button(type="button").remove-skill
+                  SvgIcon(name="trash" className="remove-skill-icon")
+        form.card-footer
+          input(type="text" placeholder="Новый навык" required).skill-input
+          .percent.input-wrapper
+            input(type="number" placeholder="0" min="0" max="100" required).percent-input
+            span.percent-sign %
+          button(type="submit").add-btn.medium.add-skill-btn
+            .circle-add-btn
+              SvgIcon(name="plus" className="add-btn-icon")

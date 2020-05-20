@@ -1,0 +1,123 @@
+.works
+  .works-header.container
+    h1.title Блок "Работы"
+  .works-content.container
+    .work-form-wrapper
+      form.card
+        .card-header Редактирование работы
+        .card-content
+          .left
+            .upload-wrapper
+              .upload-content
+                span Перетащите или загрузите для загрузки изображения
+                button(type="button").gradient-btn.upload-btn Загрузить
+            //- .preview-wrapper
+            //-   .work-image-wrapper
+            //-     ImageCustom(path="content/slider-1.jpg" className="work-image")
+            //-   button(type="button").change-work-image.text-btn Изменить превью
+          .right
+            .work-form
+              .input__wrapper
+                .input__title Название
+                .input__block
+                  input(type="text" placeholder="Название работы" required).input__text-type.input.work-title-input
+              .input__wrapper
+                .input__title Ссылка
+                .input__block
+                  input(type="text" placeholder="Ссылка на работу" required).input__text-type.input.work-link-input
+              .input__wrapper
+                .input__title Описание
+                .input__block
+                  textarea(type="textarea" rows="2" placeholder="Описание работы" required).input__textarea-type.input.work-desc-input
+              .input__wrapper
+                .input__title Добавление тэга
+                .input__block
+                  input(type="text" placeholder="Названия тэгов через запятую").input__text-type.input.tag-input
+              ul.tag-list
+                li.tag
+                  span HTML
+                  button(type="button").remove-tag
+                    SvgIcon(name="remove" className="remove-tag-icon")
+                li.tag
+                  span CSS
+                  button(type="button").remove-tag
+                    SvgIcon(name="remove" className="remove-tag-icon")
+                li.tag
+                  span JavaScript
+                  button(type="button").remove-tag
+                    SvgIcon(name="remove" className="remove-tag-icon")
+        .card-footer
+          button(type="button").create-work-cancel-btn.text-btn Отмена
+          button(type="submit").gradient-btn.create-work-btn Сохранить
+    
+    .works-list.card-list
+      
+      button(type="button").add-work.work.card
+        .card-content
+          .circle-add-btn
+            SvgIcon(name="plus" className="add-btn-icon")
+          | Добавить работу
+          
+      .work.card
+        .card-header
+          ImageCustom(path="content/slider-1.jpg" className="preview")
+          ul.tag-list
+            li.tag HTML
+            li.tag CSS
+            li.tag JavaScript
+        .card-content
+          .work-title Сайт школы образования
+          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+          a(href="#").work-link http://loftschool.com
+        .card-footer
+          button(type="button").edit-work
+            span Править
+            SvgIcon(name="pencil" className="edit-work-icon")
+          button(type="button").remove-work
+            span Удалить
+            SvgIcon(name="remove" className="remove-work-icon")
+
+      .work.card
+        .card-header
+          ImageCustom(path="content/slider-2.jpg" className="preview")
+        .card-content
+          .work-title Сайт школы образования
+          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+          a(href="#").work-link http://loftschool.com
+        .card-footer
+          button(type="button").edit-work
+            span Править
+            SvgIcon(name="pencil" className="edit-work-icon")
+          button(type="button").remove-work
+            span Удалить
+            SvgIcon(name="remove" className="remove-work-icon")
+
+      .work.card
+        .card-header
+          ImageCustom(path="content/slider-3.jpg" className="preview")
+        .card-content
+          .work-title Сайт школы образования
+          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+          a(href="#").work-link http://loftschool.com
+        .card-footer
+          button(type="button").edit-work
+            span Править
+            SvgIcon(name="pencil" className="edit-work-icon")
+          button(type="button").remove-work
+            span Удалить
+            SvgIcon(name="remove" className="remove-work-icon")
+
+      .work.card
+        .card-header
+          ImageCustom(path="content/slider-4.jpg" className="preview")
+        .card-content
+          .work-title Сайт школы образования
+          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+          a(href="#").work-link http://loftschool.com
+        .card-footer
+          button(type="button").edit-work
+            span Править
+            SvgIcon(name="pencil" className="edit-work-icon")
+          button(type="button").remove-work
+            span Удалить
+            SvgIcon(name="remove" className="remove-work-icon")

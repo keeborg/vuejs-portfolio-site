@@ -1,0 +1,100 @@
+.reviews
+  .reviews-header.container
+    h1.title Блок "Отзывы"
+  .reviews-content.container
+    .review-form-wrapper
+      form.card
+        .card-header Новый отзыв
+        .card-content
+          .left
+            .avatar-wrapper
+              .review-avatar
+                SvgIcon(name="user" className="avatar-icon")
+            button(type="button").text-btn.add-avatar-btn Добавить фото
+          .right
+            .review-form
+              .author-inputs
+                .input__wrapper
+                  .input__title Имя автора
+                  .input__block
+                    input(type="text" placeholder="Введите имя автора" required).input__text-type.input.author-name-input
+                .input__wrapper
+                  .input__title Должность автора
+                  .input__block
+                    input(type="text" placeholder="Введите должность автора" required).input__text-type.input.author-position-input
+              .input__wrapper
+                .input__title Отзыв
+                .input__block
+                  textarea(type="textarea" rows="2" placeholder="Введите отзыв" required).input__textarea-type.input.review-text-input
+              
+        .card-footer
+          button(type="button").create-review-cancel-btn.text-btn Отмена
+          button(type="submit").gradient-btn.create-review-btn Сохранить
+    
+    .reviews-list.card-list
+      
+      button(type="button").add-review.review.card
+        .card-content
+          .circle-add-btn
+            SvgIcon(name="plus" className="add-btn-icon")
+          | Добавить отзыв
+          
+      .review.card
+        .card-header
+          .avatar
+            ImageCustom(path="content/user.jpg" className="avatar-small-img")
+          .author-name Владимир Сабанцев
+          .author-position Преподаватель
+        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
+        .card-footer
+          button(type="button").edit-review
+            span Править
+            SvgIcon(name="pencil" className="edit-review-icon")
+          button(type="button").remove-review
+            span Удалить
+            SvgIcon(name="remove" className="remove-review-icon")
+      
+      .review.card
+        .card-header
+          .avatar
+            ImageCustom(path="content/user.jpg" className="avatar-small-img")
+          .author-name Владимир Сабанцев
+          .author-position Преподаватель
+        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
+        .card-footer
+          button(type="button").edit-review
+            span Править
+            SvgIcon(name="pencil" className="edit-review-icon")
+          button(type="button").remove-review
+            span Удалить
+            SvgIcon(name="remove" className="remove-review-icon")
+      
+      .review.card
+        .card-header
+          .avatar
+            ImageCustom(path="content/user.jpg" className="avatar-small-img")
+          .author-name Владимир Сабанцев
+          .author-position Преподаватель
+        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
+        .card-footer
+          button(type="button").edit-review
+            span Править
+            SvgIcon(name="pencil" className="edit-review-icon")
+          button(type="button").remove-review
+            span Удалить
+            SvgIcon(name="remove" className="remove-review-icon")
+      
+      .review.card
+        .card-header
+          .avatar
+            ImageCustom(path="content/user.jpg" className="avatar-small-img")
+          .author-name Владимир Сабанцев
+          .author-position Преподаватель
+        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
+        .card-footer
+          button(type="button").edit-review
+            span Править
+            SvgIcon(name="pencil" className="edit-review-icon")
+          button(type="button").remove-review
+            span Удалить
+            SvgIcon(name="remove" className="remove-review-icon")
