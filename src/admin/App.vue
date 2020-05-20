@@ -3,9 +3,7 @@
     Header()
     Nav()
     .main
-      About()
-      Works()
-      Reviews() 
+      router-view 
 </template>
 
 <script>

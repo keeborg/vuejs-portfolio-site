@@ -4,11 +4,12 @@
 <script>
 
 import SvgIcon from '../SvgIcon';
+import Login from '../Login/Login';
 
 export default {
     data() {
         return {}
     },
-    components: {SvgIcon}
+    components: {SvgIcon, Login}
 }
 </script>

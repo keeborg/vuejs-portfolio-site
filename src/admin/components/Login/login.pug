@@ -1,0 +1,27 @@
+.login-wrapper
+  .overlay
+  .auth-wrapper
+    button(type="button").close-btn
+      SvgIcon(name="remove" className="close-btn-icon")
+    .auth
+      .title Авторизация
+      .login-input.input__wrapper
+        .input__title Логин
+        .input__block
+            SvgIcon(name="user" className="input__icon")
+            input(
+                type="text"
+                placeholder="Введите логин"
+                id="logn-input"
+            ).input__text-type.input
+      .password-input.input__wrapper
+        .input__title Пароль
+        .input__block
+            SvgIcon(name="key" className="input__icon")
+            input(
+                type="text"
+                placeholder="Введите пароль"
+                id="password-input"
+            ).input__text-type.input
+      button(type="submit").submit-btn Отправить
+            
