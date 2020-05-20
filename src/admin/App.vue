@@ -1,12 +1,6 @@
 <template lang="pug">
   .wrapper
-    .header
-      .container
-        .avatar
-          ImageCustom(path="content/user.jpg" alt="Аватар разработчика")
-        .user-name Иван Кущев 
-        .page-desc.tabs-phones-hidden Панель администрирования
-        a(href="#").logout Выйти
+    Header()
     .nav
       .container
         ul.menu
@@ -434,12 +428,13 @@
 <script>
 import SvgIcon from './components/SvgIcon';
 import ImageCustom from './components/ImageCustom';
+import Header from './components/Header/Header';
 
 export default {
   data() {
     return {}
   },
-  components: {SvgIcon, ImageCustom}
+  components: {SvgIcon, ImageCustom, Header}
 }
 </script>
 
