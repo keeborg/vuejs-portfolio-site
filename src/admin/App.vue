@@ -1,8 +1,8 @@
 <template lang="pug">
   .wrapper
-    Header()
-    Nav()
     .main
+      router-view(name="header")
+      router-view(name="nav")
       router-view 
 </template>
 

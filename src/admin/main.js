@@ -2,15 +2,45 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 
+import Header from './components/Header/Header.vue';
+import Nav from './components/Nav/Nav.vue';
 import About from './components/About/About.vue';
 import Works from './components/Works/Works.vue';
 import Reviews from './components/Reviews/Reviews.vue';
+import Login from './components/Login/Login.vue';
 
 const router = new VueRouter({
   routes: [
-    {path: '/', component: About},
-    {path: '/works', component: Works},
-    {path: '/reviews', component: Reviews}
+    {
+      path: '/',
+      components: {
+        header: Header,
+        nav: Nav,
+        default: About
+      }
+    },
+    {
+      path: '/works',
+      components: {
+        header: Header,
+        nav: Nav,
+        default: Works
+      }
+    },
+    {
+      path: '/reviews',
+      components: {
+        header: Header,
+        nav: Nav,
+        default: Reviews
+      }
+    },
+    {
+      path: '/login',
+      components: {
+        default: Login
+      }
+    }
   ]
 });
 
