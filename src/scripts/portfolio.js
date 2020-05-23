@@ -19,6 +19,15 @@ const slider = {
             const reversedWorks = [...this.works];
             return reversedWorks.reverse();
         }
+    },
+    methods: {
+        handlePreviewClick(workId) {
+            this.works.forEach((work, index) => {
+                if (work.id === workId) {
+                    this.$emit('previewClicked', index);
+                }
+            });
+        }
     }
 }
 
@@ -73,6 +82,9 @@ new Vue({
                     this.currentIndex--;
                     break;
             }
+        },
+        handlePreviewClick(workIndex) {
+            this.currentIndex = workIndex;
         }
     },
     created() {

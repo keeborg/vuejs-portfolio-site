@@ -4,7 +4,8 @@ script(type="text/x-template")#portfolio-container
       :currentIndex="currentIndex"
       :currentWork="currentWork"
       :works="works"
-      @slide="changeSlide"  
+      @slide="changeSlide" 
+      @previewClicked="handlePreviewClick" 
     )
     info(:currentWork="currentWork")
 
@@ -18,6 +19,7 @@ script(type="text/x-template")#portfolio-slider
           preview(
             :works="reversedWorks"
             :currentWork="currentWork"
+            @previewClicked="handlePreviewClick"
           )
       btns(
         :currentIndex="currentIndex"
@@ -29,7 +31,9 @@ script(type="text/x-template")#portfolio-slider
 script(type="text/x-template")#portfolio-slider__preview
   .slider__preview-wrapper.tabs-phones-hidden
     button(type="button").slider__preview(
-      v-for="work in works" 
+      v-for="work in works"
+      @click="$emit('previewClicked', work.id)"
+      :key="work.id"
       :class="[{'desktop-hidden' : work.id === works.length}, {'active' : work.id === currentWork.id}]"
     )
       img(:src="work.photo")
