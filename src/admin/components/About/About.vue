@@ -2,14 +2,24 @@
 <style lang="pcss" scoped src="./about.pcss"></style>
 
 <script>
-
+import { eventBus } from '../../main.js';
 import SvgIcon from '../SvgIcon';
-import Login from '../Login/Login';
+import Category from './Category/Category';
 
 export default {
     data() {
-        return {}
+        return {
+            isAddFormActive: false,
+        }
     },
-    components: {SvgIcon, Login}
+    components: {SvgIcon, Category},
+    methods: {
+        handleAddCategoryCard() {
+            eventBus.$emit("showTost", {
+                type: 'success',
+                message: 'Категория успешно добавлена'
+            });
+        }
+    }
 }
 </script>

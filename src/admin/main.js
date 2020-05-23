@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Vuelidate from 'vuelidate';
 import App from './App.vue';
+
+export const eventBus = new Vue();
 
 import Header from './components/Header/Header.vue';
 import Nav from './components/Nav/Nav.vue';
@@ -45,6 +48,7 @@ const router = new VueRouter({
 });
 
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 
 new Vue({
   el: "#app-root",

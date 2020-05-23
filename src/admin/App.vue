@@ -4,6 +4,7 @@
       router-view(name="header")
       router-view(name="nav")
       router-view 
+    Toster()
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import Nav from './components/Nav/Nav';
 import About from './components/About/About';
 import Works from './components/Works/Works';
 import Reviews from './components/Reviews/Reviews';
+import Toster from './components/Toster';
 
 export default {
   data() {
@@ -26,7 +28,8 @@ export default {
     Nav,
     About,
     Works,
-    Reviews
+    Reviews,
+    Toster
   }
 }
 </script>

@@ -1,0 +1,8 @@
+script(type="text/x-template")#toster-container
+  .toster__wrapper(
+    :class="type"
+    :style="{transform: 'translate(-50%, '+ translateY +')'}"
+  )
+    .toster__msg {{message}}
+    button(type="button" @click="hideTost").toster__close-btn
+      +icon('remove', 'toster__close-btn-icon')

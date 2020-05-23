@@ -1,11 +1,5 @@
 @import '../../../styles/mixins.pcss';
 
-.card-header {
-  .card-header-title {
-    flex: 1;
-  }
-}
-
 .about {
   @include tablets-650 {
     .about-content.container {
@@ -37,7 +31,7 @@
   }
 }
 
-.about-content {
+/* .about-content {
   .card-content {
     display: flex;
     flex-direction: column;
@@ -51,9 +45,14 @@
       margin-bottom: 20px;
     }
   }
-}
+  .card-header {
+    .card-header-title {
+      flex: 1;
+    }
+  }
+} */
 
-.category-input {
+/* .category-input {
   width: 250px;
   &[readonly="readonly"] {
     font-weight: 600;
@@ -63,7 +62,12 @@
   }
 }
 
-.percent {
+.control-btns {
+  display: flex;
+  justify-self: flex-end;
+} */
+
+/* .percent {
   margin-left: 15px;
 }
 
@@ -72,16 +76,12 @@
   @include desktop-tabs {
     margin-left: 20px;
   }
-}
+} */
 
-.control-btns {
-  display: flex;
-  justify-self: flex-end;
-}
+
 
 .save-category,
 .edit-category-cancel,
-.remove-category,
 .save-skill,
 .edit-skill-cancel {
   display: block;

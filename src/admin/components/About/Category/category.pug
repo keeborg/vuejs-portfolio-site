@@ -1,0 +1,23 @@
+.card
+  form.card-header
+    .card-header-title
+      input(type="text" placeholder="Название группы" required).category-input
+    .control-btns(v-if="editMode")
+      button(type="submit").save-category
+        SvgIcon(name="tick" className="save-category-icon")
+      button(type="button").edit-category-cancel
+        SvgIcon(name="remove" className="edit-category-cancel-icon")
+    .control-btns(v-else)
+      button(type="button").edit-category
+        SvgIcon(name="pencil" className="edit-category-icon")
+      button(type="button").remove-category
+        SvgIcon(name="trash" className="remove-category-icon")
+  .card-content
+  form.card-footer
+    input(type="text" placeholder="Новый навык" required).skill-input
+    .percent.input-wrapper
+      input(type="number" placeholder="0" min="0" max="100" required).percent-input
+      span.percent-sign %
+    button(type="submit" @click="editMode = !editMode").add-btn.medium.add-skill-btn
+      .circle-add-btn
+        SvgIcon(name="plus" className="add-btn-icon")

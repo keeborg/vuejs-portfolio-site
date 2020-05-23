@@ -1,0 +1,42 @@
+script(type="text/x-template")#contact-container
+  .contact__wrapper
+    h2.contact__title Связаться со мной
+    form.contact__form
+      .form__row
+        .form__item.text.name-input
+          .login-input.input__wrapper(:class="{ 'error': $v.name.$error }")
+            label.input__title Введите ваше имя
+            .input__block
+                +icon("user", "input__icon")
+                input(
+                  v-model.trim="name"
+                  @blur="$v.name.$touch()"
+                  type="text"
+                  placeholder="Имя"
+                ).input__text-type.input
+            .error-msg(v-if="!$v.name.required && $v.name.$dirty") Обязательное поле
+        .form__item.text.email-input
+          .password-input.input__wrapper(:class="{ 'error': $v.email.$error }")
+            label.input__title Введите ваш email
+            .input__block
+                +icon("envelope", "input__icon")
+                input(
+                  v-model.trim="email"
+                  @blur="$v.email.$touch()"
+                  type="text"
+                  placeholder="E-mail"
+                ).input__text-type.input
+            .error-msg(v-if="!$v.email.required && $v.email.$dirty") Обязательное поле
+      .form__item.textarea.comment-input
+        .password-input.input__wrapper(:class="{ 'error': $v.comment.$error }")
+            label.input__title Сообщение к письму
+            .input__block
+                +icon("message", "input__icon")
+                textarea(
+                  v-model.trim="comment"
+                  @blur="$v.comment.$touch()"
+                  rows="2"
+                  placeholder="Комментарий"
+                ).input__textarea-type.input
+            .error-msg(v-if="!$v.comment.required && $v.comment.$dirty") Обязательное поле
+      button(type="submit" @click.prevent="handleSubmit").submit-btn Отправить
