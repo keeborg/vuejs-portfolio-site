@@ -31,17 +31,17 @@
 }
 
 .works-list {
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: normal;
 }
 
 .work {
-  margin-right: 10px;
   width: 30%;
-  margin-right: 3%;
+  margin-right: 5%;
   min-width: 150px;
   padding: 0;
-  &:last-child {
+  &:last-child,
+  &:nth-child(3n) {
     margin-right: 0;
   }
 
@@ -122,12 +122,16 @@
     &:nth-child(even) {
       margin-right: 0;
     }
+    &:nth-child(3n) {
+      margin-right: 2%;
+    }
   }
   @include tabs-phones {
     width: 100%;
     min-height: 550px;
     margin-right: 2%;
-    &:nth-child(even) {
+    &:nth-child(even),
+    &:nth-child(3n) {
       margin-right: 0;
     }
   }
