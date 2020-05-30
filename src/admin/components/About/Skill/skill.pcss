@@ -1,0 +1,71 @@
+.save-skill,
+.save-skill-cancel {
+  display: block;
+  padding: 0;
+  width: 15px;
+  height: 12px;
+  .save-skill-cancel-icon {
+    fill: #bf2929;
+  }
+  .save-skill-icon {
+    fill: #00d70a;
+  }
+}
+
+.save-skill-cancel {
+  margin-left: 20px;
+}
+
+.edit-skill,
+.remove-skill {
+  width: 16px;
+  height: 15px;
+  padding: 0;
+  svg {
+    fill: $text-color-light;
+    opacity: 0.5;
+  }
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+  &:active {
+    svg {
+      opacity: 0.8;
+    }
+  }
+}
+
+.remove-skill {
+  margin-left: 20px;
+}
+
+.skill-row {
+  td {
+    font-weight: 400;
+    padding: 10px 5px;
+  }
+  .name {
+    width: 65%;
+    .skill-input {
+      width: 100%;
+    }
+  }
+  .percent-value {
+    width: 50px;
+    position: relative;
+    .percent {
+      margin: 0;
+    }
+    .percent-input + .percent-sign {
+      transform: translate(-30%, 0);
+    }
+  }
+  .control-btns {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+}

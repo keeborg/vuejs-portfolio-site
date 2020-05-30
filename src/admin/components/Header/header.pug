@@ -4,4 +4,4 @@
       ImageCustom(path="content/user.jpg" alt="Аватар разработчика")
     .user-name Иван Кущев 
     .page-desc.tabs-phones-hidden Панель администрирования
-    a(href="#").logout Выйти
+    a(href="#" @click.prevent="logout").logout Выйти

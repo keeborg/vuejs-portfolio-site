@@ -3,11 +3,19 @@
 
 <script>
 import ImageCustom from '../ImageCustom';
+import {mapActions} from 'vuex';
 
 export default {
     data() {
         return {}
     },
-    components: {ImageCustom}
+    components: {ImageCustom},
+    methods: {
+        ...mapActions('user', ['logoutUser']),
+        async logout() {
+            await this.logoutUser();
+            this.$router.go('/login');
+        }
+    }
 }
 </script>

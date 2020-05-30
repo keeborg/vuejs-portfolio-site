@@ -1,9 +1,9 @@
 .nav
   .container
     ul.menu
-      li.menu-item.active
-        a(href="#").menu-link Обо мне
-      li.menu-item
-        a(href="#").menu-link Работы
-      li.menu-item
-        a(href="#").menu-link Отзывы
+      li(:class="{active: this.$route.path === '/'}").menu-item
+        router-link(tag="a" to="/").menu-link Обо мне
+      li(:class="{active: this.$route.path === '/works'}").menu-item
+        router-link(tag="a" to="/works").menu-link Работы
+      li(:class="{active: this.$route.path === '/reviews'}").menu-item
+        router-link(tag="a" to="/reviews").menu-link Отзывы

@@ -25,12 +25,14 @@
     }
   }
 
-  &.active {
+  &.active,
+  &:hover {
     border-bottom: 4px solid $text-color-active;
     .menu-link {
       color: $text-color-active;
     }
   }
+
   @include tabs-phones {
     padding: 25px 15px;
   }

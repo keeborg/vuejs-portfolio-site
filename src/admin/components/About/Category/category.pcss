@@ -5,6 +5,9 @@
   flex-direction: column;
 }
 .card {
+  @include desktop-tabs {
+    width: 30%;
+  }
   @include tablets {
     width: 30%;
   }
@@ -24,8 +27,11 @@
   &[readonly="readonly"] {
     font-weight: 600;
   }
+  @include desktop-tabs {
+    width: 180px;
+  }
   @include tablets {
-    width: 160px;
+    width: 170px;
   }
 }
 
@@ -36,6 +42,7 @@
 
 .percent {
   margin-left: 15px;
+  align-self: flex-end;
 }
 
 .add-skill-btn {
@@ -44,14 +51,43 @@
     margin-left: 20px;
   }
 }
+  
+.percent-value {
+  width: 50px;
+  position: relative;
+  .percent {
+    margin: 0;
+  }
+  .percent-input + span.percent-sign {
+    transform: translate(-30%, 0%);
+  }
+}
+
+.input__wrapper {
+  align-self: flex-end;
+  .percent-input + span.percent-sign {
+    transform: translate(-30%, 0%);
+  }
+}
+
+.skill-input {
+  @include desktop-tabs {
+    width: 150px;
+  }
+  @include tablets {
+    width: 135px;
+  }
+}
+
+
 
 .save-category,
-.edit-category-cancel {
+.save-category-cancel {
   display: block;
   padding: 0;
   width: 15px;
   height: 12px;
-  .edit-category-cancel-icon {
+  .save-category-cancel-icon {
     fill: #bf2929;
   }
   .save-category-icon {
@@ -59,7 +95,7 @@
   }
 }
 
-.edit-category-cancel,
+.save-category-cancel,
 .remove-category {
   margin-left: 20px;
 }
