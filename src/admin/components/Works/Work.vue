@@ -5,9 +5,9 @@
         ul.tag-list
             li(:key="tag" v-for="tag in tagsSeparated").tag {{tag}}
     .card-content
-        .work-title {{title}}
-        .work-desc {{desc}}
-        a(:href="link").work-link {{link}}
+        .work-title {{work.title}}
+        .work-desc {{work.desc}}
+        a(:href="work.link").work-link {{work.link}}
     .card-footer
         button(type="button" @click="updateWork").edit-work
             span Править
@@ -25,23 +25,25 @@ import ImageCustom from '../ImageCustom';
 
 export default {
     components: {SvgIcon, ImageCustom},
-    data() {
-        return {
-            id:    this.work.id,
-            photo: this.work.photo,
-            title: this.work.title,
-            link:  this.work.link,
-            desc:  this.work.description,
-            tags:  this.work.techs
-        }
+    props: {
+        workProp: Object
     },
-    props: ['work'],
     computed: {
         tagsSeparated() {
-            return this.tags.split(',');
+            return this.work.tags.split(',');
         },
         fullImgPath() {
-            return this.$axios.defaults.baseURL + `/${this.photo}`;
+            return this.$axios.defaults.baseURL + `/${this.work.photo}`;
+        },
+        work() {
+            return {
+                id:    this.workProp.id,
+                photo: this.workProp.photo,
+                title: this.workProp.title,
+                link:  this.workProp.link,
+                desc:  this.workProp.description,
+                tags:  this.workProp.techs
+            }
         }
     },
     methods: {
@@ -49,16 +51,16 @@ export default {
         ...mapActions('works', ['deleteWork']),
         updateWork() {
             this.$emit('updateWork', {
-                id:    this.id,
-                photo: this.photo,
-                title: this.title,
-                link:  this.link,
-                desc:  this.desc,
-                tags:  this.tags
+                id:    this.work.id,
+                photo: this.work.photo,
+                title: this.work.title,
+                link:  this.work.link,
+                desc:  this.work.desc,
+                tags:  this.work.tags
             });
         },
         async removeWork() {
-            const response = await this.deleteWork(this.id);
+            const response = await this.deleteWork(this.work.id);
             if (response.status === 200) {
                 this.toast('success', 'Работа успешно удалена');
             } else {

@@ -66,8 +66,6 @@ export default {
             this.form.link = '';
             this.form.desc = '';
             this.form.tags = '';
-            this.isAddFormActive = false;
-            this.isUpdatingWork = false;
             this.$v.form.$reset();
         },
         async addWork() {
@@ -81,32 +79,34 @@ export default {
                 formData.append('description', this.form.desc);
                 formData.append('techs', this.form.tags);
 
+                let response = null;
                 if (!this.isUpdatingWork) {
-                    const response = await this.createWork(formData);
+                    response = await this.createWork(formData);
                 } else {
-                    const response = await this.updateWork({id: this.form.id,work: formData});
+                    response = await this.updateWork({id: this.form.id, work: formData});
                 }
                 
-                console.log(response);
                 if (response.status === 201) {
                     this.clearForm();
+                    this.isAddFormActive = false;
                     this.toast('success', 'Работа успешно добавлена');
                 } else if (response.status === 200) {
-                    this.clearForm();
                     this.toast('success', 'Работа успешно обновлена');
                 } else {
                     this.toast('error', 'Не удалось добавить работу');
                 }
             }
         },
-        updateWork(work) {
+        changeWork(work) {
             this.isUpdatingWork = true;
             this.isAddFormActive = true;
             this.form = {...work};
             this.renderedImg = this.$axios.defaults.baseURL + '/' + this.form.photo;
         },
         cancelAddForm() {
+            this.clearForm();
             this.isAddFormActive = false;
+            this.isUpdatingWork = false;
         },
         handleImgUpload(event) {
             const photo = event.target.files[0];

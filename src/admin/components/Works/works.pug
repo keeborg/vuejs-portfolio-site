@@ -61,4 +61,4 @@
             SvgIcon(name="plus" className="add-btn-icon")
           | Добавить работу
 
-      Work(:key="work.id" v-for="work in works" :work="work" @updateWork="updateWork")
+      Work(:key="work.id" v-for="work in works" :workProp="work" @updateWork="changeWork")

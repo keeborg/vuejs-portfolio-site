@@ -46,8 +46,7 @@ export default {
         async updateWork(context, {id, work}) {
             try {
                 const response = await this.$axios.post('/works/' + id, work);
-                console.log(response);
-                //context.commit('UPDATE_WORK', response.data);
+                context.commit('UPDATE_WORK', response.data.work);
                 return response;
             } catch (error) {
                 return error;
