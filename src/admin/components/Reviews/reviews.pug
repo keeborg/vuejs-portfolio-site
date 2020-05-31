@@ -7,10 +7,14 @@
         .card-header Новый отзыв
         .card-content
           .left
-            .avatar-wrapper
-              .review-avatar
-                SvgIcon(name="user" className="avatar-icon")
-            button(type="button").text-btn.add-avatar-btn Добавить фото
+            div(v-if="renderedImg !== ''")
+              .avatar-wrapper(:style="{background: `url(${renderedImg}) no-repeat center center`}")
+              button(type="button").text-btn.add-avatar-btn Добавить фото
+            div(v-else)
+              .avatar-wrapper
+                .review-avatar
+                  SvgIcon(name="user" className="avatar-icon")
+              button(type="button").text-btn.add-avatar-btn Добавить фото
           .right
             .review-form
               .author-inputs

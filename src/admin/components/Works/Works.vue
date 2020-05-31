@@ -43,9 +43,11 @@ export default {
             photo: {
                 required,
                 filesize(value) {
-                    const filesize = (this.form.photo.size/1024/1024).toFixed(4);
-                    if (this.form.photo.size !== undefined) {
-                        return filesize < 1.5;
+                    if (this.form.photo !== undefined) {
+                        const filesize = (this.form.photo.size/1024/1024).toFixed(4);
+                        if (this.form.photo.size !== undefined) {
+                            return filesize < 1.5;
+                        }
                     }
                     return true;
                 }
@@ -73,33 +75,28 @@ export default {
             if (!this.$v.form.$anyError) {
                 const formData = new FormData();
 
-                if (typeof this.form.photo !== 'string') {
-                    formData.append('photo', this.form.photo);
-                } else {
-                    let imgBlob = await this.$axios.get(this.form.photo);
-                    console.log(imgBlob);
-                }
-                // formData.append('title', this.form.title);
-                // formData.append('link', this.form.link);
-                // formData.append('description', this.form.desc);
-                // formData.append('techs', this.form.tags);
+                formData.append('photo', this.form.photo);
+                formData.append('title', this.form.title);
+                formData.append('link', this.form.link);
+                formData.append('description', this.form.desc);
+                formData.append('techs', this.form.tags);
 
-                // if (this.isUpdatingWork) {
-                //     const response = await this.createWork(formData);
-                // } else {
-                //     const response = await this.updateWork({id: this.form.id,work: formData});
-                // }
+                if (!this.isUpdatingWork) {
+                    const response = await this.createWork(formData);
+                } else {
+                    const response = await this.updateWork({id: this.form.id,work: formData});
+                }
                 
-                // console.log(response);
-                // if (response.status === 201) {
-                //     this.clearForm();
-                //     this.toast('success', 'Работа успешно добавлена');
-                // } else if (response.status === 200) {
-                //     this.clearForm();
-                //     this.toast('success', 'Работа успешно обновлена');
-                // } else {
-                //     this.toast('error', 'Не удалось добавить работу');
-                // }
+                console.log(response);
+                if (response.status === 201) {
+                    this.clearForm();
+                    this.toast('success', 'Работа успешно добавлена');
+                } else if (response.status === 200) {
+                    this.clearForm();
+                    this.toast('success', 'Работа успешно обновлена');
+                } else {
+                    this.toast('error', 'Не удалось добавить работу');
+                }
             }
         },
         updateWork(work) {

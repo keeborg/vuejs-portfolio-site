@@ -55,7 +55,7 @@
     
     .works-list.card-list
       
-      button(type="button" @click="isAddFormActive = true").add-work.work.card
+      button(type="button" @click="clearForm();isAddFormActive = true").add-work.work.card
         .card-content
           .circle-add-btn
             SvgIcon(name="plus" className="add-btn-icon")
