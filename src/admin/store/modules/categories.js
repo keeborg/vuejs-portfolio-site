@@ -37,6 +37,14 @@ export default {
                 return cat;
             });
         },
+        UPDATE_SKILL(state, updatedSkill) {
+            state.categories = state.categories.map(cat => {
+                if (cat.id === updatedSkill.category) {
+                    cat.skills = cat.skills.filter(skill => skill.id !== updatedSkill.id);
+                }
+                return cat;
+            });
+        },
         DELETE_SKILL(state, {id, categoryId}) {
             state.categories = state.categories.map(cat => {
                 if (cat.id === categoryId) {
@@ -88,7 +96,17 @@ export default {
         async addSkill(context, newSkill) {
             try {
                 const response = await this.$axios.post('/skills', {...newSkill});
-                context.commit('ADD_SKILL', newSkill);
+                context.commit('ADD_SKILL', response.data);
+                return response;
+            } catch (error) {
+                return error;
+            }
+        },
+        async updateSkill(context, updatedSkill) {
+            try {
+                const {id, category, title, percent} = updatedSkill;
+                const response = await this.$axios.post('/skills/' + id, {category, title, percent});
+                context.commit('UPDATE_SKILL', response.data);
                 return response;
             } catch (error) {
                 return error;

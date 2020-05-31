@@ -48,20 +48,30 @@
   .card-header {
     padding: 0;
     position: relative;
-    max-height: 270px;
+    height: 200px;
+    .preview {
+      width: 100%;
+      height: 100%;
+    }
     .tag-list {
       position: absolute;
-      right: 10px;
+      justify-content: flex-end;
+      right: 0;
+      left: 10px;
       bottom: 0;
       .tag {
-        
         font-size: 13px;
         padding: 5px 10px;
+        &:last-child {
+          margin-bottom: 10px;
+          margin-right: 15px;
+        }
       }
     }
   }
 
   .card-content {
+    word-break: break-word;
     padding: 0 20px;
     .work-title {
       font-size: 18px;
@@ -202,6 +212,9 @@
       width: 80%;
       margin: 0 auto;
     }
+    @include tabs-phones {
+      width: 100%;
+    }
   }
   .card-footer {
     @include tablets {
@@ -249,8 +262,36 @@
   flex-direction: column;
   align-items: center;
   .change-work-image {
+    text-align: center;
     margin-top: 30px;
   }
+}
+
+.error-msg.change-photo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    background-color: #f00;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.error-msg.change-photo-upload-box {
+  position: absolute;
+    top: 110%;
+    left: 50%;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    background-color: #f00;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    z-index: 999;
 }
 
 .work-form {
@@ -275,6 +316,20 @@
       }
     }
   }
+}
+
+.upload-btn,
+.text-btn {
+  cursor: pointer;
+}
+
+.upload-input {
+  opacity: 0;
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
 }
 
 .create-work-cancel-btn {

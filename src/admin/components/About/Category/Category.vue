@@ -92,11 +92,14 @@ export default {
             if (this.category.titleCopy === '' && this.editMode) {
                 this.toast('info', 'Чтобы добавить скилл, сохраните категорию');
             } else {
-                this.$v.skillToAdd.$touch();
+                await this.$v.skillToAdd.$touch();
                 if (!this.$v.skillToAdd.$anyError) {
                     let response = await this.addSkill({category: this.category.id, ...this.skillToAdd});
                     if (response.status == 201) {
                         this.toast('success', 'Скилл успешно добавлен');
+                        this.skillToAdd.title = '';
+                        this.skillToAdd.percent = 0;
+                        this.$v.skillToAdd.$reset();
                     } else {
                         this.toast('error', 'Не удалось добавить скилл');
                     }

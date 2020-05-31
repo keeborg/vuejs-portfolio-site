@@ -24,22 +24,19 @@ export default {
     computed: {
         ...mapState({
             categories: state => state.categories.categories,
-            user_id: state => state.user.user.id
+            userId: state => state.user.user.id
         })
     },
     components: {SvgIcon, Category},
     created() {
-        this.fetchCategories(this.user_id);
+        this.fetchCategories(this.userId);
     },
     methods: {
         ...mapMutations(['ADD_EMPTY_CATEGORY']),
         ...mapActions('categories', ['fetchCategories']),
         addCategoryCard() {
             if (this.isAddFormActive) {
-                eventBus.$emit("showTost", {
-                    type: 'info',
-                    message: 'Форма добавления категории уже открыта'
-                });
+                this.toast('info', 'Форма добавления категории уже открыта');
             } else {
                 this.isAddFormActive = true;
                 this.$store.commit('categories/ADD_EMPTY_CATEGORY', this.emptyCategory);

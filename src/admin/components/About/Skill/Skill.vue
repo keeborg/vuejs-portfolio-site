@@ -35,14 +35,22 @@ export default {
     props: ['skillProp'],
     components: {SvgIcon},
     methods: {
-        ...mapActions('categories', ['deleteSkill']),
+        ...mapActions('categories', ['deleteSkill', 'updateSkill']),
         editSkill() {
             this.skillCopy = {...this.skill};
             this.editMode = true;
         },
-        saveSkill() {
+        async saveSkill() {
             this.$v.skill.$touch();
-            this.toast('success', 'Навык успешно добавлен');
+            if (!this.$v.skill.$anyError) {
+                let response = await this.updateSkill(this.skill);
+                if (response.status == 200) {
+                    this.editMode = false;
+                    this.toast('success', 'Скилл успешно обновлен');
+                } else {
+                    this.toast('error', 'Не удалось добавить скилл');
+                }
+            }
         },
         saveSkillCancel() {
             this.skill = {...this.skillCopy};

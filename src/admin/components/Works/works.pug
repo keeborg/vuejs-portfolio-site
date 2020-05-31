@@ -3,121 +3,62 @@
     h1.title Блок "Работы"
   .works-content.container
     .work-form-wrapper
-      form.card
+      form(v-if="isAddFormActive").card
         .card-header Редактирование работы
         .card-content
           .left
-            .upload-wrapper
+            .preview-wrapper(v-if="renderedImg !== ''")
+              .work-image-wrapper(:class="{ 'error': $v.form.photo.$error }")
+                .work-image(:style="{background: `url(${renderedImg}) no-repeat center center`}")
+                input(type="file" id="change-photo" @change="handleImgUpload").upload-input
+                .error-msg.change-photo(v-if="!$v.form.photo.filesize && $v.form.photo.$dirty") Файл должен быть меньше 1.5мб
+              .input__wrapper
+                label(for="change-photo").change-work-image.text-btn Изменить превью
+                
+            .upload-wrapper(v-else :class="{ 'error': $v.form.photo.$error }")
               .upload-content
                 span Перетащите или загрузите для загрузки изображения
-                button(type="button").gradient-btn.upload-btn Загрузить
-            //- .preview-wrapper
-            //-   .work-image-wrapper
-            //-     ImageCustom(path="content/slider-1.jpg" className="work-image")
-            //-   button(type="button").change-work-image.text-btn Изменить превью
+                label(for="upload-photo").gradient-btn.upload-btn Загрузить
+                input(type="file" id="upload-photo" @change="handleImgUpload").upload-input
+              .error-msg.change-photo-upload-box(v-if="!$v.form.photo.required && $v.form.photo.$dirty") Необходимо загрузить изображение
           .right
             .work-form
-              .input__wrapper
+              .input__wrapper(:class="{ 'error': $v.form.title.$error }")
                 .input__title Название
                 .input__block
-                  input(type="text" placeholder="Название работы" required).input__text-type.input.work-title-input
-              .input__wrapper
+                  input(v-model="form.title" type="text" placeholder="Название работы" required).input__text-type.input.work-title-input
+                  .error-msg(v-if="!$v.form.title.required && $v.form.title.$dirty") Обязательное поле
+              .input__wrapper(:class="{ 'error': $v.form.link.$error }")
                 .input__title Ссылка
                 .input__block
-                  input(type="text" placeholder="Ссылка на работу" required).input__text-type.input.work-link-input
-              .input__wrapper
+                  input(v-model="form.link" type="text" placeholder="Ссылка на работу" required).input__text-type.input.work-link-input
+                  .error-msg(v-if="!$v.form.link.required && $v.form.link.$dirty") Обязательное поле
+              .input__wrapper(:class="{ 'error': $v.form.desc.$error }")
                 .input__title Описание
                 .input__block
-                  textarea(type="textarea" rows="2" placeholder="Описание работы" required).input__textarea-type.input.work-desc-input
-              .input__wrapper
+                  textarea(v-model="form.desc" type="textarea" rows="2" placeholder="Описание работы" required).input__textarea-type.input.work-desc-input
+                  .error-msg(v-if="!$v.form.desc.required && $v.form.desc.$dirty") Обязательное поле
+              .input__wrapper(:class="{ 'error': $v.form.tags.$error }")
                 .input__title Добавление тэга
                 .input__block
-                  input(type="text" placeholder="Названия тэгов через запятую").input__text-type.input.tag-input
+                  input(v-model="form.tags" type="text" placeholder="Названия тэгов через запятую").input__text-type.input.tag-input
+                  .error-msg(v-if="!$v.form.tags.required && $v.form.tags.$dirty") Обязательное поле
               ul.tag-list
-                li.tag
-                  span HTML
-                  button(type="button").remove-tag
+                li(v-if="(tag !== '' && tag !== ' ')" v-for="tag in tagsSeparated").tag
+                  span {{tag}}
+                  button(type="button" @click="removeTag" :data-tag="tag.trim()").remove-tag
                     SvgIcon(name="remove" className="remove-tag-icon")
-                li.tag
-                  span CSS
-                  button(type="button").remove-tag
-                    SvgIcon(name="remove" className="remove-tag-icon")
-                li.tag
-                  span JavaScript
-                  button(type="button").remove-tag
-                    SvgIcon(name="remove" className="remove-tag-icon")
+
         .card-footer
-          button(type="button").create-work-cancel-btn.text-btn Отмена
-          button(type="submit").gradient-btn.create-work-btn Сохранить
+          button(type="button" @click="cancelAddForm").create-work-cancel-btn.text-btn Отмена
+          button(type="submit" @click.prevent="addWork").gradient-btn.create-work-btn Сохранить
     
     .works-list.card-list
       
-      button(type="button").add-work.work.card
+      button(type="button" @click="isAddFormActive = true").add-work.work.card
         .card-content
           .circle-add-btn
             SvgIcon(name="plus" className="add-btn-icon")
           | Добавить работу
-          
-      .work.card
-        .card-header
-          ImageCustom(path="content/slider-1.jpg" className="preview")
-          ul.tag-list
-            li.tag HTML
-            li.tag CSS
-            li.tag JavaScript
-        .card-content
-          .work-title Сайт школы образования
-          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          a(href="#").work-link http://loftschool.com
-        .card-footer
-          button(type="button").edit-work
-            span Править
-            SvgIcon(name="pencil" className="edit-work-icon")
-          button(type="button").remove-work
-            span Удалить
-            SvgIcon(name="remove" className="remove-work-icon")
 
-      .work.card
-        .card-header
-          ImageCustom(path="content/slider-2.jpg" className="preview")
-        .card-content
-          .work-title Сайт школы образования
-          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          a(href="#").work-link http://loftschool.com
-        .card-footer
-          button(type="button").edit-work
-            span Править
-            SvgIcon(name="pencil" className="edit-work-icon")
-          button(type="button").remove-work
-            span Удалить
-            SvgIcon(name="remove" className="remove-work-icon")
-
-      .work.card
-        .card-header
-          ImageCustom(path="content/slider-3.jpg" className="preview")
-        .card-content
-          .work-title Сайт школы образования
-          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          a(href="#").work-link http://loftschool.com
-        .card-footer
-          button(type="button").edit-work
-            span Править
-            SvgIcon(name="pencil" className="edit-work-icon")
-          button(type="button").remove-work
-            span Удалить
-            SvgIcon(name="remove" className="remove-work-icon")
-
-      .work.card
-        .card-header
-          ImageCustom(path="content/slider-4.jpg" className="preview")
-        .card-content
-          .work-title Сайт школы образования
-          .work-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          a(href="#").work-link http://loftschool.com
-        .card-footer
-          button(type="button").edit-work
-            span Править
-            SvgIcon(name="pencil" className="edit-work-icon")
-          button(type="button").remove-work
-            span Удалить
-            SvgIcon(name="remove" className="remove-work-icon")
+      Work(:key="work.id" v-for="work in works" :work="work" @updateWork="updateWork")
