@@ -6,11 +6,10 @@ import { required } from 'vuelidate/lib/validators';
 import { mapActions, mapState, mapMutations } from 'vuex';
 import { renderer } from '../../helpers/pictures';
 import SvgIcon from '../SvgIcon';
-import ImageCustom from '../ImageCustom';
 import Work from './Work';
 
 export default {
-    components: {Work, SvgIcon, ImageCustom},
+    components: {Work, SvgIcon},
     data() {
         return {
             isAddFormActive: false,

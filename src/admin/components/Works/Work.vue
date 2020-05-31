@@ -1,7 +1,7 @@
 <template lang="pug">
 .work.card
     .card-header
-        .preview(:style="{background: `url(${fullImgPath}) no-repeat center center`}")
+        .preview(:style="{background: `url(${fullImgPath}) no-repeat center center`, backgroundSize: 'cover'}")
         ul.tag-list
             li(:key="tag" v-for="tag in tagsSeparated").tag {{tag}}
     .card-content
@@ -21,10 +21,9 @@
 <script>
 import {mapActions, mapMutations} from 'vuex';
 import SvgIcon from '../SvgIcon';
-import ImageCustom from '../ImageCustom';
 
 export default {
-    components: {SvgIcon, ImageCustom},
+    components: {SvgIcon},
     props: {
         workProp: Object
     },
@@ -47,7 +46,6 @@ export default {
         }
     },
     methods: {
-        ...mapMutations(['DELETE_WORK']),
         ...mapActions('works', ['deleteWork']),
         updateWork() {
             this.$emit('updateWork', {

@@ -3,102 +3,51 @@
     h1.title Блок "Отзывы"
   .reviews-content.container
     .review-form-wrapper
-      form.card
+      form(v-if="isAddFormActive").card
         .card-header Новый отзыв
         .card-content
-          .left
-            div(v-if="renderedImg !== ''")
-              .avatar-wrapper(:style="{background: `url(${renderedImg}) no-repeat center center`}")
-              button(type="button").text-btn.add-avatar-btn Добавить фото
-            div(v-else)
-              .avatar-wrapper
-                .review-avatar
-                  SvgIcon(name="user" className="avatar-icon")
-              button(type="button").text-btn.add-avatar-btn Добавить фото
+          .left(v-if="renderedImg !== ''" :class="{ 'error': $v.form.photo.$error }")
+            .avatar-wrapper(:style="{background: `url(${renderedImg}) no-repeat center center`, backgroundSize: 'cover'}")
+            input(type="file" id="upload-photo" @change="handleImgUpload").upload-input
+            label(for="upload-photo").text-btn.add-avatar-btn Изменить фото
+            .error-msg.change-photo(v-if="!$v.form.photo.filesize && $v.form.photo.$dirty") Файл должен быть меньше 1.5мб
+          .left(v-else :class="{ 'error': $v.form.photo.$error }")
+            .avatar-wrapper
+              .review-avatar
+                SvgIcon(name="user" className="avatar-icon")
+            input(type="file" id="upload-photo" @change="handleImgUpload").upload-input
+            label(for="upload-photo").text-btn.add-avatar-btn Добавить фото
+            .error-msg.change-photo-upload-box(v-if="!$v.form.photo.required && $v.form.photo.$dirty") Необходимо загрузить изображение
+
           .right
             .review-form
               .author-inputs
-                .input__wrapper
+                .input__wrapper(:class="{ 'error': $v.form.name.$error }").author-name-input-wrapper
                   .input__title Имя автора
                   .input__block
-                    input(type="text" placeholder="Введите имя автора" required).input__text-type.input.author-name-input
-                .input__wrapper
+                    input(v-model="form.name" type="text" placeholder="Имя" required).input__text-type.input.author-name-input
+                    .error-msg(v-if="!$v.form.name.required && $v.form.name.$dirty") Обязательное поле
+                .input__wrapper(:class="{ 'error': $v.form.position.$error }").author-position-input-wrapper
                   .input__title Должность автора
                   .input__block
-                    input(type="text" placeholder="Введите должность автора" required).input__text-type.input.author-position-input
-              .input__wrapper
+                    input(v-model="form.position" type="text" placeholder="Должность" required).input__text-type.input.author-position-input
+                    .error-msg(v-if="!$v.form.position.required && $v.form.position.$dirty") Обязательное поле
+              .input__wrapper(:class="{ 'error': $v.form.review.$error }")
                 .input__title Отзыв
                 .input__block
-                  textarea(type="textarea" rows="2" placeholder="Введите отзыв" required).input__textarea-type.input.review-text-input
+                  textarea(v-model="form.review" type="textarea" rows="2" placeholder="Введите отзыв" required).input__textarea-type.input.review-text-input
+                  .error-msg(v-if="!$v.form.review.required && $v.form.review.$dirty") Обязательное поле
               
         .card-footer
-          button(type="button").create-review-cancel-btn.text-btn Отмена
-          button(type="submit").gradient-btn.create-review-btn Сохранить
+          button(type="button" @click="cancelAddForm").create-review-cancel-btn.text-btn Отмена
+          button(type="submit" @click.prevent="addReview").gradient-btn.create-review-btn Сохранить
     
     .reviews-list.card-list
       
-      button(type="button").add-review.review.card
+      button(type="button" @click="clearForm();isAddFormActive = true").add-review.review.card
         .card-content
           .circle-add-btn
             SvgIcon(name="plus" className="add-btn-icon")
           | Добавить отзыв
           
-      .review.card
-        .card-header
-          .avatar
-            ImageCustom(path="content/user.jpg" className="avatar-small-img")
-          .author-name Владимир Сабанцев
-          .author-position Преподаватель
-        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
-        .card-footer
-          button(type="button").edit-review
-            span Править
-            SvgIcon(name="pencil" className="edit-review-icon")
-          button(type="button").remove-review
-            span Удалить
-            SvgIcon(name="remove" className="remove-review-icon")
-      
-      .review.card
-        .card-header
-          .avatar
-            ImageCustom(path="content/user.jpg" className="avatar-small-img")
-          .author-name Владимир Сабанцев
-          .author-position Преподаватель
-        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
-        .card-footer
-          button(type="button").edit-review
-            span Править
-            SvgIcon(name="pencil" className="edit-review-icon")
-          button(type="button").remove-review
-            span Удалить
-            SvgIcon(name="remove" className="remove-review-icon")
-      
-      .review.card
-        .card-header
-          .avatar
-            ImageCustom(path="content/user.jpg" className="avatar-small-img")
-          .author-name Владимир Сабанцев
-          .author-position Преподаватель
-        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
-        .card-footer
-          button(type="button").edit-review
-            span Править
-            SvgIcon(name="pencil" className="edit-review-icon")
-          button(type="button").remove-review
-            span Удалить
-            SvgIcon(name="remove" className="remove-review-icon")
-      
-      .review.card
-        .card-header
-          .avatar
-            ImageCustom(path="content/user.jpg" className="avatar-small-img")
-          .author-name Владимир Сабанцев
-          .author-position Преподаватель
-        .card-content Этот код выдержит любые испытания. Только пожалуйста, не загружайте его на слишком старых браузерах.
-        .card-footer
-          button(type="button").edit-review
-            span Править
-            SvgIcon(name="pencil" className="edit-review-icon")
-          button(type="button").remove-review
-            span Удалить
-            SvgIcon(name="remove" className="remove-review-icon")
+      Review(v-for="review in reviews" :key="review.id" :reviewProp="review" @updateReview="changeReview")

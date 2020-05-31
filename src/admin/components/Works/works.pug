@@ -9,7 +9,7 @@
           .left
             .preview-wrapper(v-if="renderedImg !== ''")
               .work-image-wrapper(:class="{ 'error': $v.form.photo.$error }")
-                .work-image(:style="{background: `url(${renderedImg}) no-repeat center center`}")
+                .work-image(:style="{background: `url(${renderedImg}) no-repeat center center`, backgroundSize: 'cover'}")
                 input(type="file" id="change-photo" @change="handleImgUpload").upload-input
                 .error-msg.change-photo(v-if="!$v.form.photo.filesize && $v.form.photo.$dirty") Файл должен быть меньше 1.5мб
               .input__wrapper
