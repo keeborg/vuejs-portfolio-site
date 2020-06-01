@@ -31,7 +31,7 @@ export default {
         review() {
             return {
                 id:       this.reviewProp.id,
-                photo:    this.reviewProp.photo || '',
+                photo:    this.reviewProp.photo,
                 name:     this.reviewProp.author,
                 position: this.reviewProp.occ,
                 review:   this.reviewProp.text

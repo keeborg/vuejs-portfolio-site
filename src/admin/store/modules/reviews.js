@@ -46,7 +46,7 @@ export default {
         async updateReview(context, { id, review }) {
             try {
                 const response = await this.$axios.post('/reviews/' + id, review);
-                context.commit('UPDATE_REVIEW', response.data);
+                context.commit('UPDATE_REVIEW', response.data.review);
                 return response;
             } catch (error) {
                 return error;
