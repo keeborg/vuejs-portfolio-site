@@ -1,12 +1,19 @@
 import Vue from "vue";
 import VueCarousel from 'vue-carousel';
+import axios from 'axios';
+import paths from '../../env.paths.json';
 
 Vue.use(VueCarousel);
 
 
 const reviewItem = {
     template: "#reviews-item",
-    props: ["reviewItem"]
+    props: ["reviewItem"],
+    computed: {
+        imgPath() {
+            return paths.BASE_URL + '/' + this.reviewItem.photo;
+        }
+    }
 }
 
 const btns = {
@@ -48,8 +55,8 @@ new Vue({
             });
         }
     },
-    created() {
-        const data = require('../data/reviews.json');
-        this.reviews = this.makeArrayWithRequireImages(data);
+    async created() {
+        const data = await axios.get(paths.BASE_URL + '/reviews/324');
+        this.reviews = data.data;
     }
 });

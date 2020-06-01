@@ -1,8 +1,15 @@
 import Vue from "vue";
+import axios from 'axios';
+import paths from '../../env.paths.json';
 
 const preview = {
     template: "#portfolio-slider__preview",
-    props: ["works", "currentWork"]
+    props: ["works", "currentWork"],
+    computed: {
+        imgPath() {
+            return paths.BASE_URL + '/' + this.currentWork.photo
+        }
+    }
 }
 
 const btns = {
@@ -15,6 +22,9 @@ const slider = {
     components: { preview, btns },
     props: ["currentWork", "works", "currentIndex"],
     computed: {
+        imgPath() {
+            return paths.BASE_URL + '/' + this.currentWork.photo;
+        },
         reversedWorks() {
             const reversedWorks = [...this.works];
             return reversedWorks.reverse();
@@ -66,13 +76,6 @@ new Vue({
         }
     },
     methods: {
-        makeArrayWithRequireImages(array) {
-            return array.map(item => {
-                const requirePic = require(`../images/content/${item.photo}`);
-                item.photo = requirePic;
-                return item;
-            });
-        },
         changeSlide(direction) {
             switch(direction) {
                 case 'next':
@@ -88,7 +91,8 @@ new Vue({
         }
     },
     created() {
-        const data = require('../data/works.json');
-        this.works = this.makeArrayWithRequireImages(data);
+        axios.get(paths.BASE_URL + '/works/324').then(response => {
+            this.works = response.data;
+        });
     }
 })

@@ -11,11 +11,11 @@ script(type="text/x-template")#portfolio-container
 
 
 script(type="text/x-template")#portfolio-slider
-  .slider(:data-slide="currentIndex+1")
+  .slider(v-if="works" :data-slide="currentIndex+1")
     .slider__main
       .slider__window
         .slider__current-item
-          img(:src="currentWork.photo")
+          img(:style="{background: `url(${imgPath}) no-repeat center center`, backgroundSize: 'cover'}").current-image-full
           preview(
             :works="reversedWorks"
             :currentWork="currentWork"
@@ -35,8 +35,8 @@ script(type="text/x-template")#portfolio-slider__preview
       @click="$emit('previewClicked', work.id)"
       :key="work.id"
       :class="[{'desktop-hidden' : work.id === works.length}, {'active' : work.id === currentWork.id}]"
+      :style="{background: `url(https://webdev-api.loftschool.com/${work.photo}) no-repeat center center`, backgroundSize: 'cover'}"
     )
-      img(:src="work.photo")
 
 
 script(type="text/x-template")#portfolio-slider__btns
@@ -55,9 +55,9 @@ script(type="text/x-template")#portfolio-slider__btns
 
 script(type="text/x-template")#portfolio-info
   .portfolio__desc
-    tags(:skills="currentWork.skills")
+    tags(:skills="currentWork.techs")
     h3.portfolio__desc-title {{currentWork.title}}
-    .portfolio__desc-info {{currentWork.desc}}
+    .portfolio__desc-info {{currentWork.description}}
     a(:href="currentWork.link" target="_blank").portfolio__desc-link
       +icon("link", "portfolio__desc-link-icon")
       |Посмотреть сайт

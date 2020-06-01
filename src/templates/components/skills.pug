@@ -1,7 +1,7 @@
 script(type="text/x-template")#skills-list
   div
     ul.skills-card__skills-list
-      li.skills-category(v-for="category in skills" :key="category.title")
+      li.skills-category(v-for="category in skills" :key="category.category")
         skills-category(:category="category")
     svg(style="width:0; height:0; position: absolute;" aria-hidden="true")
       linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
@@ -10,7 +10,7 @@ script(type="text/x-template")#skills-list
 
 script(type="text/x-template")#skills-category
   div
-    h3.skills-category__name {{category.title}}
+    h3.skills-category__name {{category.category}}
     ul.skills-category__list
       li.skill(v-for="skill in category.skills" :key="skill.id")
         skill(:skill="skill")
