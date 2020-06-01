@@ -22,6 +22,9 @@
     &:hover {
       color: $text-color-active;;
     }
+    @include tabs-phones {
+      padding: 10px 15px;
+    }
   }
 
   &.active,
@@ -33,6 +36,6 @@
   }
 
   @include tabs-phones {
-    padding: 25px 15px;
+    padding: 20px 15px;
   }
 }
