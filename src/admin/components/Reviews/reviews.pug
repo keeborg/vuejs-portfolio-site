@@ -3,11 +3,11 @@
     h1.title Блок "Отзывы"
   .reviews-content.container
     .review-form-wrapper
-      form(v-if="isAddFormActive").card
+      form(v-if="isAddFormActive" ref="form").card
         .card-header Новый отзыв
         .card-content
           .left(v-if="renderedImg !== ''" :class="{ 'error': $v.form.photo.$error }")
-            .avatar-wrapper(:style="{background: `url(${renderedImg}) no-repeat center center`, backgroundSize: 'cover'}")
+            .avatar-wrapper(:style="{background: `url(${renderedImg}) center center / cover no-repeat`}")
             input(type="file" id="upload-photo" @change="handleImgUpload").upload-input
             label(for="upload-photo").text-btn.add-avatar-btn Изменить фото
             .error-msg.change-photo(v-if="!$v.form.photo.filesize && $v.form.photo.$dirty") Файл должен быть меньше 1.5мб
@@ -35,7 +35,7 @@
               .input__wrapper(:class="{ 'error': $v.form.review.$error }")
                 .input__title Отзыв
                 .input__block
-                  textarea(v-model="form.review" type="textarea" rows="2" placeholder="Введите отзыв" required).input__textarea-type.input.review-text-input
+                  textarea(v-model="form.review" type="textarea" rows="4" placeholder="Введите отзыв" required).input__textarea-type.input.review-text-input
                   .error-msg(v-if="!$v.form.review.required && $v.form.review.$dirty") Обязательное поле
               
         .card-footer

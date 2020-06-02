@@ -1,5 +1,5 @@
 script(type="text/x-template")#portfolio-container
-  .portfolio__content
+  .portfolio__content(v-if="works.length")
     slider(
       :currentIndex="currentIndex"
       :currentWork="currentWork"
@@ -11,11 +11,11 @@ script(type="text/x-template")#portfolio-container
 
 
 script(type="text/x-template")#portfolio-slider
-  .slider(v-if="works" :data-slide="currentIndex+1")
+  .slider(:data-slide="currentIndex+1")
     .slider__main
       .slider__window
         .slider__current-item
-          img(:style="{background: `url(${imgPath}) no-repeat center center`, backgroundSize: 'cover'}").current-image-full
+          img(:style="{background: `url(${imgPath}) center center / cover no-repeat`}").current-image-full
           preview(
             :works="reversedWorks"
             :currentWork="currentWork"

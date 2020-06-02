@@ -3,8 +3,10 @@ import Vuelidate from 'vuelidate';
 
 Vue.use(Vuelidate);
 
-import { required } from 'vuelidate/lib/validators';
+import { required, helpers } from 'vuelidate/lib/validators';
 import { toster } from './toster';
+
+const emailValidation = helpers.regex('email', /^[\w\.]+\@[A-Za-z]+\.[a-z]+$/);
 
 new Vue({
     el: "#contact-component",
@@ -33,7 +35,10 @@ new Vue({
     },
     validations: {
         name: { required },
-        email: { required },
+        email: { 
+            required,
+            emailValidation
+        },
         comment: { required }
     }
 });

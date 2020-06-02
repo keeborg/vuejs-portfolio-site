@@ -3,13 +3,13 @@
     h1.title Блок "Работы"
   .works-content.container
     .work-form-wrapper
-      form(v-if="isAddFormActive").card
+      form(v-if="isAddFormActive" ref="form").card
         .card-header Редактирование работы
         .card-content
           .left
             .preview-wrapper(v-if="renderedImg !== ''")
               .work-image-wrapper(:class="{ 'error': $v.form.photo.$error }")
-                .work-image(:style="{background: `url(${renderedImg}) no-repeat center center`, backgroundSize: 'cover'}")
+                .work-image(:style="{background: `url(${renderedImg}) center center / cover no-repeat`}")
                 input(type="file" id="change-photo" @change="handleImgUpload").upload-input
                 .error-msg.change-photo(v-if="!$v.form.photo.filesize && $v.form.photo.$dirty") Файл должен быть меньше 1.5мб
               .input__wrapper
@@ -36,7 +36,7 @@
               .input__wrapper(:class="{ 'error': $v.form.desc.$error }")
                 .input__title Описание
                 .input__block
-                  textarea(v-model="form.desc" type="textarea" rows="2" placeholder="Описание работы" required).input__textarea-type.input.work-desc-input
+                  textarea(v-model="form.desc" type="textarea" rows="4" placeholder="Описание работы" required).input__textarea-type.input.work-desc-input
                   .error-msg(v-if="!$v.form.desc.required && $v.form.desc.$dirty") Обязательное поле
               .input__wrapper(:class="{ 'error': $v.form.tags.$error }")
                 .input__title Добавление тэга

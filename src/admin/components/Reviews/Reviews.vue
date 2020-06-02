@@ -82,6 +82,9 @@ export default {
                     this.toast('success', 'Отзыв успешно добавлен');
                 } else if (response.status === 200) {
                     this.toast('success', 'Отзыв успешно обновлен');
+                    this.clearForm();
+                    this.isAddFormActive = false;
+                    this.isUpdatingReview = false;
                 } else {
                     this.toast('error', 'Не удалось добавить отзыв');
                 }
@@ -105,6 +108,11 @@ export default {
                 this.renderedImg = pic;
             });
             this.$v.form.photo.$touch();
+        }
+    },
+    updated() {
+        if (this.isAddFormActive) {
+            this.$refs.form.scrollIntoView();
         }
     }
 }

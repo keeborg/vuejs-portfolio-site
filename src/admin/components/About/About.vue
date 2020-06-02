@@ -41,6 +41,10 @@ export default {
                 this.isAddFormActive = true;
                 this.$store.commit('categories/ADD_EMPTY_CATEGORY', this.emptyCategory);
             }
+        },
+        disableAddForm() {
+            console.log('HANDLED');
+            this.isAddFormActive = false;
         }
     }
 }

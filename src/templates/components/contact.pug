@@ -27,6 +27,7 @@ script(type="text/x-template")#contact-container
                   placeholder="E-mail"
                 ).input__text-type.input
             .error-msg(v-if="!$v.email.required && $v.email.$dirty") Обязательное поле
+            .error-msg(v-if="!$v.email.emailValidation && $v.email.$dirty") Некорректный формат e-mail
       .form__item.textarea.comment-input
         .password-input.input__wrapper(:class="{ 'error': $v.comment.$error }")
             label.input__title Сообщение к письму

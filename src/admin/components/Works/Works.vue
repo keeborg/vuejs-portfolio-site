@@ -56,6 +56,11 @@ export default {
     created() {
         this.fetchWorks(this.userId);
     },
+    updated() {
+        if (this.isAddFormActive) {
+            this.$refs.form.scrollIntoView();
+        }
+    },
     methods: {
         ...mapActions('works', ['createWork', 'fetchWorks', 'updateWork']),
         clearForm() {
@@ -90,6 +95,9 @@ export default {
                     this.isAddFormActive = false;
                     this.toast('success', 'Работа успешно добавлена');
                 } else if (response.status === 200) {
+                    this.clearForm();
+                    this.isAddFormActive = false;
+                    this.isUpdatingReview = false;
                     this.toast('success', 'Работа успешно обновлена');
                 } else {
                     this.toast('error', 'Не удалось добавить работу');
