@@ -25,5 +25,5 @@
               placeholder="Введите пароль"
             ).input__text-type.input
         .error-msg(v-if="!$v.user.password.required && $v.user.password.$dirty") Обязательное поле
-      button(type="submit" @click.prevent="login").submit-btn Отправить
+      button(type="submit" @click.prevent="login" :disabled="user.name=='' || user.password==''").submit-btn Отправить
             
