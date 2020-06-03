@@ -30,6 +30,9 @@ export default {
     components: {SvgIcon, Category},
     created() {
         this.fetchCategories(this.userId);
+        eventBus.$on('created', () => {
+            this.isAddFormActive = false;
+        });
     },
     methods: {
         ...mapMutations(['ADD_EMPTY_CATEGORY']),
@@ -41,10 +44,6 @@ export default {
                 this.isAddFormActive = true;
                 this.$store.commit('categories/ADD_EMPTY_CATEGORY', this.emptyCategory);
             }
-        },
-        disableAddForm() {
-            console.log('HANDLED');
-            this.isAddFormActive = false;
         }
     }
 }

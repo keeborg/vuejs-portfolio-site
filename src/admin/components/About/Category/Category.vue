@@ -4,6 +4,7 @@
 <script>
 import { required, between } from 'vuelidate/lib/validators';
 import { mapActions } from 'vuex';
+import {eventBus} from '../../../main';
 import SvgIcon from '../../SvgIcon';
 import Skill from '../Skill/Skill';
 
@@ -59,7 +60,7 @@ export default {
                     } else {
                         this.toast('error', 'Не удалось добавить категорию');
                     }
-                    this.$emit('created');
+                    eventBus.$emit('created');
                 } else { // updating of an existing one
                     const response = await this.updateCategory({id: this.category.id, title: this.category.title});
                     if (response.status == 200) {

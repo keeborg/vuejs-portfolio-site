@@ -8,4 +8,4 @@ div
         | Добавить группу
     .about-content.container
       .card-list
-        Category(:key="cat.id" v-for="cat in categories" :cat="cat" @created="disableAddForm")
+        Category(:key="cat.id" v-for="cat in categories" :cat="cat")
