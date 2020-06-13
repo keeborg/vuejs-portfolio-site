@@ -11,6 +11,7 @@ export default {
             state.categories = state.categories.map(cat => {
                 if (cat.id === -1) {
                     cat = {...category};
+                    cat.skills = [];
                 }
                 return cat;
             });
@@ -96,6 +97,7 @@ export default {
         async addSkill(context, newSkill) {
             try {
                 const response = await this.$axios.post('/skills', {...newSkill});
+                console.log(response);
                 context.commit('ADD_SKILL', response.data);
                 return response;
             } catch (error) {

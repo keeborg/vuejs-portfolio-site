@@ -97,6 +97,8 @@ export default {
                 await this.$v.skillToAdd.$touch();
                 if (!this.$v.skillToAdd.$anyError) {
                     let response = await this.addSkill({category: this.category.id, ...this.skillToAdd});
+                    console.log('Response from category');
+                    console.log(response);
                     if (response.status == 201) {
                         this.toast('success', 'Скилл успешно добавлен');
                         this.skillToAdd.title = '';
