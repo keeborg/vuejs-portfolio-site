@@ -1,9 +1,14 @@
 {
   "text-color": "#464e62",
+  "text-color-light": "#414c63",
   "text-color-hover": "#252933",
+  "text-color-active": "#383bcf",
   "links-color": "#4b6fd7",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
+  "bp-desktop-tabs": "985px",
   "bp-tablets": "768px",
+  "bp-tablets-650": "650px",
+  "bp-tabs-phones": "500px",
   "bp-phones": "480px"
 }

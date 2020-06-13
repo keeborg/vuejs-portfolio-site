@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import "normalize.css";
+@import "../styles/mixins.pcss";
+@import "../styles/responsive-helpers.pcss";
+@import "../styles/layout/base.pcss";
+@import "../styles/blocks/input.pcss";
+
+.maincontent, .wrapper {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.maincontent {
+  background: url("../images/mountain_baloon.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.main {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(246, 250, 255, 0.93);
+}
+
+.container {
+  max-width: 1080px;
+}
+
+.avatar {
+  grid-column: 1/2;
+  grid-row: 1/3;
+  align-self: center;
+  justify-self: center;
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  max-height: 45px;
+  margin-right: 15px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.card-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #fff;
+  min-width: 48%;
+  min-height: 390px;
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 10px rgba(199, 199, 199, 0.6);
+  display: flex;
+  flex-direction: column;
+  .card-header {
+    display: flex;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 10px 15px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0, 0.15);
+    .card-header-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  .card-content {
+    flex-grow: 1;
+  }
+  .card-footer {
+    display: flex;
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+}
+
+input {
+  line-height: 1.3;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  &::placeholder {
+    font-weight: 600;
+    opacity: 0.6;
+  }
+  &[readonly="readonly"] {
+      outline: none;
+    border-bottom: none;
+    font-weight: normal;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.percent {
+  position: relative;
+  .percent-sign {
+    position: absolute;
+    right: 0;
+  }
+
+  .percent-input {
+    padding: 0 20px 10px 10px;
+    max-width: 65px;
+    &[readonly="readonly"] {
+      outline: none;
+      border-bottom: none;
+      font-weight: normal;
+    }
+  }
+
+  .percent-input + .percent-sign {
+    transform: translate(-30%, 20%);
+  }
+  /* Chrome, Safari, Edge, Opera */
+  .percent-input::-webkit-outer-spin-button,
+  .percent-input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  .percent-input[type=number] {
+    appearance: textfield;
+  }
+}
+
+/*===== Buttons start =====*/
+.add-btn {
+  &:hover {
+    color: #26288c;
+    .circle-add-btn {
+      background-image: linear-gradient(to right, #3f35cb 0%, #006aed 100%);
+    }
+  }
+
+  &:active {
+    .circle-add-btn {
+      background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+    }
+  }
+}
+
+.add-btn.text {
+  color: $text-color-active;
+  font-weight: 600;
+  display: flex;
+  &:hover {
+    color: #26288c;
+  }
+  &:active {
+    color: $text-color-active;
+  }
+}
+
+.circle-add-btn {
+  position: relative;
+  min-width: 20px;
+  min-height: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+  .add-btn-icon {
+    fill: #fff;
+    width: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.add-btn.medium {
+  display: block;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  .circle-add-btn {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    .add-btn-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.gradient-btn,
+.gradient-btn[type="submit"] {
+  color: #fff;
+  padding: 15px 45px;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+  border-radius: 25px;
+  &:hover {
+    background-image: linear-gradient(to right, #3f35cb 0%, #006aed 100%);
+  }
+  &:active {
+    background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+  }
+}
+
+.text-btn {
+  color: $text-color-active;
+  font-weight: 600;
+  &:hover {
+    color: #000;
+  }
+}
+
+button[type="submit"] {
+  background: transparent;
+}
+/*===== Buttons end =====*/

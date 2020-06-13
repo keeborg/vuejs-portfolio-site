@@ -29,6 +29,16 @@
         font-size: 18px;
         font-weight: 600;
         opacity: 0.4;
+        @include desktop {
+            position: absolute;
+            transform: translate(-112%, 8%);
+            text-align: right;
+        }
+        @include desktop {
+            position: relative;
+            transform: none;
+            text-align: center;
+        }
     }
 
     &__name{

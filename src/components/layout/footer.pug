@@ -1,11 +1,11 @@
 footer.footer
   .container
     .footer__wrapper
-      .footer__block.footer__copyright
-        .copyright 2020
-      .footer__block.footer__bio
-        .footer__block-row.footer__bio-name Иван Кущев
-        .footer__block-row.footer__bio-desc Личный сайт веб-разработчика
+      .footer__block.footer__about
+        .footer__copyright.copyright 2020
+        .footer__bio
+          .footer__block-row.footer__bio-name User Name
+          .footer__block-row.footer__bio-desc Личный сайт веб-разработчика
       .footer__block.footer__data
         .footer__block-row.footer__nav
           nav.menu
@@ -23,7 +23,7 @@ footer.footer
               ul.socials
                 each social in socials
                   li.socials__item
-                    a.socials__link
+                    a(target="_blank").socials__link
                       +icon(social, 'socials__icon')
           .footer__quote
             .footer__quote-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете

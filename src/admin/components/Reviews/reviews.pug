@@ -1,0 +1,53 @@
+.reviews
+  .reviews-header.container
+    h1.title Блок "Отзывы"
+  .reviews-content.container
+    .review-form-wrapper
+      form(v-if="isAddFormActive" ref="form").card
+        .card-header Новый отзыв
+        .card-content
+          .left(v-if="renderedImg !== ''" :class="{ 'error': $v.form.photo.$error }")
+            .avatar-wrapper(:style="{background: `url(${renderedImg}) center center / cover no-repeat`}")
+            input(type="file" id="upload-photo" @change="handleImgUpload").upload-input
+            label(for="upload-photo").text-btn.add-avatar-btn Изменить фото
+            .error-msg.change-photo(v-if="!$v.form.photo.filesize && $v.form.photo.$dirty") Файл должен быть меньше 1.5мб
+          .left(v-else :class="{ 'error': $v.form.photo.$error }")
+            .avatar-wrapper
+              .review-avatar
+                SvgIcon(name="user" className="avatar-icon")
+            input(type="file" id="upload-photo" @change="handleImgUpload").upload-input
+            label(for="upload-photo").text-btn.add-avatar-btn Добавить фото
+            .error-msg.change-photo-upload-box(v-if="!$v.form.photo.required && $v.form.photo.$dirty") Необходимо загрузить изображение
+
+          .right
+            .review-form
+              .author-inputs
+                .input__wrapper(:class="{ 'error': $v.form.name.$error }").author-name-input-wrapper
+                  .input__title Имя автора
+                  .input__block
+                    input(v-model="form.name" type="text" placeholder="Имя" required).input__text-type.input.author-name-input
+                    .error-msg(v-if="!$v.form.name.required && $v.form.name.$dirty") Обязательное поле
+                .input__wrapper(:class="{ 'error': $v.form.position.$error }").author-position-input-wrapper
+                  .input__title Должность автора
+                  .input__block
+                    input(v-model="form.position" type="text" placeholder="Должность" required).input__text-type.input.author-position-input
+                    .error-msg(v-if="!$v.form.position.required && $v.form.position.$dirty") Обязательное поле
+              .input__wrapper(:class="{ 'error': $v.form.review.$error }")
+                .input__title Отзыв
+                .input__block
+                  textarea(v-model="form.review" type="textarea" rows="4" placeholder="Введите отзыв" required).input__textarea-type.input.review-text-input
+                  .error-msg(v-if="!$v.form.review.required && $v.form.review.$dirty") Обязательное поле
+              
+        .card-footer
+          button(type="button" @click="cancelAddForm").create-review-cancel-btn.text-btn Отмена
+          button(type="submit" @click.prevent="addReview").gradient-btn.create-review-btn Сохранить
+    
+    .reviews-list.card-list
+      
+      button(type="button" @click="clearForm();isAddFormActive = true").add-review.review.card
+        .card-content
+          .circle-add-btn
+            SvgIcon(name="plus" className="add-btn-icon")
+          | Добавить отзыв
+          
+      Review(v-for="review in reviews" :key="review.id" :reviewProp="review" @updateReview="changeReview")

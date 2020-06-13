@@ -1,0 +1,31 @@
+.card
+  form.card-header
+    .card-header-title
+      .input__wrapper(:class="{ 'error': $v.category.title.$error }")
+        input(v-model="category.title" type="text" placeholder="Название группы" :readonly="!editMode").category-input
+        .error-msg(v-if="!$v.category.title.required && $v.category.title.$dirty") Обязательное поле
+    .control-btns(v-if="editMode")
+      button(key="save-category" type="submit" @click.prevent="saveCategory").save-category
+        SvgIcon(key="save-category-icon" name="tick" className="save-category-icon")
+      button(key="save-category-cancel" type="button" @click="cancelSaveCategory").save-category-cancel
+        SvgIcon(key="save-category-cancel-icon" name="remove" className="save-category-cancel-icon")
+    .control-btns(v-else)
+      button(key="edit-category" type="button" @click="editCategory").edit-category
+        SvgIcon(key="edit-category-icon" name="pencil" className="edit-category-icon")
+      button(key="remove-category" type="button" @click="removeCategory").remove-category
+        SvgIcon(key="remove-category-icon" name="trash" className="remove-category-icon")
+  .card-content
+    table.skill-list
+      Skill(:key="skill.id" v-for="skill in cat.skills" :skillProp="skill")
+  form.card-footer
+    .input__wrapper(:class="{'error':$v.skillToAdd.title.$error }")
+      input(v-model="skillToAdd.title" type="text" placeholder="Новый навык").skill-input
+      .error-msg(v-if="!$v.skillToAdd.title.required && $v.skillToAdd.title.$dirty") Обязательное поле
+    .percent.input-wrapper.input__wrapper(:class="{'error':$v.skillToAdd.percent.$error }")
+      input(v-model="skillToAdd.percent" type="number"  placeholder="0" min="0" max="100").percent-input
+      span.percent-sign %
+      .error-msg(v-if="!$v.skillToAdd.percent.required && $v.skillToAdd.percent.$dirty") Обязательное поле
+      .error-msg(v-if="!$v.skillToAdd.percent.between && $v.skillToAdd.percent.$dirty") Введите значение от 1 до 100
+    button(type="submit" @click.prevent="createSkill").add-btn.medium.add-skill-btn
+      .circle-add-btn
+        SvgIcon(name="plus" className="add-btn-icon")

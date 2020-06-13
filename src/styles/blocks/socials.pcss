@@ -7,6 +7,10 @@
         &:last-child {
             margin-right: 0;
         }
+
+        @include desktop-tabs {
+            margin-right: 60px;
+        }
     }
 
     &__icon {
@@ -21,6 +25,11 @@
 
         &:hover {
             fill: $text-color-hover;
+        }
+
+        @include desktop-tabs {
+            width: 30px;
+            height: 30px;
         }
     }
 }

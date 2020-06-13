@@ -1,0 +1,23 @@
+tr.skill-row
+  td.name
+    .input__wrapper(:class="{'error':$v.skill.title.$error }")
+      input(v-model="skill.title" type="text" :readonly="!editMode" placeholder="Название навыка" required).skill-input
+      .error-msg(v-if="!$v.skill.title.required && $v.skill.title.$dirty") Обязательное поле
+  td.percent-value
+    .percent.input-wrapper.input__wrapper(:class="{'error':$v.skill.percent.$error }")
+      input(v-model="skill.percent" type="number" :readonly="!editMode" placeholder="0").percent-input
+      span.percent-sign %
+      .error-msg(v-if="!$v.skill.percent.required && $v.skill.percent.$dirty") Обязательное поле
+      .error-msg(v-if="!$v.skill.percent.between && $v.skill.percent.$dirty") Введите значение от 1 до 100
+  td(v-if="!editMode")
+    .control-btns
+      button(type="button" @click="editSkill").edit-skill
+        SvgIcon(key="edit-skill" name="pencil" className="edit-skill-icon")
+      button(type="button" @click="removeSkill").remove-skill
+        SvgIcon(key="remove-skill" name="trash" className="remove-skill-icon")
+  td(v-else)
+    .control-btns
+      button(type="submit" @click.prevent="saveSkill").save-skill
+        SvgIcon(key="save-skill" name="tick" className="save-skill-icon")
+      button(type="button" @click="saveSkillCancel").save-skill-cancel
+        SvgIcon(key="save-skill-cancel" name="remove" className="save-skill-cancel-icon")

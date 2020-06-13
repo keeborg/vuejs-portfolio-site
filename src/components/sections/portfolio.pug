@@ -2,18 +2,4 @@ section#portfolio.portfolio
   .container
     .portfolio__wrapper
       h2.portfolio__title Мои работы
-      .portfolio__content
-        include ../blocks/slider.pug
-        .portfolio__desc
-          .tag-list
-            .tag 
-              span HTML
-            .tag
-              span CSS
-            .tag
-              span Javascript
-          h3.portfolio__desc-title Сайт школы образования
-          .portfolio__desc-info Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 2 Месяца только самых тяжелых испытаний и бессонных ночей!
-          a.portfolio__desc-link
-            +icon("link", "portfolio__desc-link-icon")
-            |Посмотреть сайт
+      #portfolio-component

@@ -11,15 +11,19 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .welcome-section
-        .welcome-section-parallax
+      .welcome-sections
+        include components/blocks/welcome_section_parallax
         include components/sections/hero
         include components/sections/about
       include components/sections/skills
       include components/sections/portfolio
       .last-sections
-        .last-sections-parallax
+        include components/blocks/last_sections_parallax
         include components/sections/reviews
         include components/sections/contact
       include components/layout/footer
+
+      #toster-component
+
+    include ./templates/entry.pug
 

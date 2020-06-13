@@ -1,0 +1,69 @@
+script(type="text/x-template")#portfolio-container
+  .portfolio__content(v-if="works.length")
+    slider(
+      :currentIndex="currentIndex"
+      :currentWork="currentWork"
+      :works="works"
+      @slide="changeSlide" 
+      @previewClicked="handlePreviewClick" 
+    )
+    info(:currentWork="currentWork")
+
+
+script(type="text/x-template")#portfolio-slider
+  .slider(:data-slide="currentIndex+1")
+    .slider__main
+      .slider__window
+        .slider__current-item
+          img(:style="{background: `url(${imgPath}) center center / cover no-repeat`}").current-image-full
+          preview(
+            :works="reversedWorks"
+            :currentWork="currentWork"
+            @previewClicked="handlePreviewClick"
+          )
+      btns(
+        :currentIndex="currentIndex"
+        :worksLength="works.length"
+        @slide="$emit('slide', $event)"
+      )
+
+
+script(type="text/x-template")#portfolio-slider__preview
+  .slider__preview-wrapper.tabs-phones-hidden
+    button(type="button").slider__preview(
+      v-for="work in works"
+      @click="$emit('previewClicked', work.id)"
+      :key="work.id"
+      :class="[{'desktop-hidden' : work.id === works.length}, {'active' : work.id === currentWork.id}]"
+      :style="{background: `url(https://webdev-api.loftschool.com/${work.photo}) no-repeat center center`, backgroundSize: 'cover'}"
+    )
+
+
+script(type="text/x-template")#portfolio-slider__btns
+  .slider__buttons
+    button(
+      :disabled="currentIndex === worksLength - 1"
+      @click.prevent="$emit('slide', 'next')"
+    ).up-btn
+      +icon("arrow-down", "arrow-up")
+    button(
+      :disabled="currentIndex === 0"
+      @click.prevent="$emit('slide', 'prev')"
+    ).down-btn
+      +icon("arrow-down", "arrow-down")
+
+
+script(type="text/x-template")#portfolio-info
+  .portfolio__desc
+    tags(:skills="currentWork.techs")
+    h3.portfolio__desc-title {{currentWork.title}}
+    .portfolio__desc-info {{currentWork.description}}
+    a(:href="currentWork.link" target="_blank").portfolio__desc-link
+      +icon("link", "portfolio__desc-link-icon")
+      |Посмотреть сайт
+
+
+script(type="text/x-template")#portfolio-info__tags
+  ul.tag-list
+    li.tag(v-for="skill in parsedSkills") 
+      span {{skill.trim()}}

@@ -1,0 +1,39 @@
+.toster__wrapper {
+    position: fixed;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    width: 500px;
+    padding: 20px;
+    color: #fff;
+    transition: transform 1s;
+    .toster__msg {
+        font-weight: 600;
+        padding-right: 20px;
+    }
+    .toster__close-btn {
+        position: absolute;
+        right: 10px;
+        padding: 0;
+        transform: translate(0, -50%);
+        top: 50%;
+        width: 15px;
+        height: 15px;
+        .toster__close-btn-icon {
+            fill: #fff;
+        }
+    }
+
+    &.success {
+        background-color: #4bb133;
+    }
+
+    &.error {
+        background-color: #b13333;
+    }
+
+    &.info {
+        background-color: #b18333;
+    }
+    
+}

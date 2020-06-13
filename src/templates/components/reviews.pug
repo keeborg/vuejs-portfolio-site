@@ -1,0 +1,48 @@
+script(type="text/x-template")#reviews-container 
+  .reviews__wrapper
+    .reviews__header
+      h2.reviews__title Что обо мне говорят
+      btns(
+        @switchSlide="switchSlide"
+        :allowForward="allowForward"
+        :allowBackward="allowBackward"
+      )
+    carousel(
+      :perPageCustom="[[0, 1], [340, 1], [500, 2]]"
+      :paginationEnabled="false"
+      :navigateTo="currentSlide"
+      :perPage="2"
+      ref="reviews-carousel"
+      @page-change="switchSlide('swipe')"
+    ).reviews__content
+      slide(v-for="review in reviews" :key="review.id")
+        review-item(:reviewItem="review")
+
+
+script(type="text/x-template")#reviews-item
+  .review-item
+    +icon("quote", "review-item__quote-icon")
+    .review-item__card
+      .review-item__text
+        p {{reviewItem.text}}
+      .review-item__author
+        .avatar.review-item__avatar(:style="{background: `url(${imgPath}) no-repeat center center`, backgroundSize: 'cover'}")
+        .review-item__author-info
+          .review-item__author-name {{reviewItem.author}}
+          .review-item__author-position {{reviewItem.occ}}
+
+
+script(type="text/x-template")#reviews-slider__btns
+  .reviews__buttons
+    button(
+      type="button"
+      @click.prevent="$emit('switchSlide', 'prev')"
+      :disabled="!allowBackward"
+    ).circle-btn
+      +icon("arrow-down", "left-arrow")
+    button(
+      type="button"
+      @click.prevent="$emit('switchSlide', 'next')"
+      :disabled="!allowForward"
+    ).circle-btn
+      +icon("arrow-down", "right-arrow")

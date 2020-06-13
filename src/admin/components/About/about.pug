@@ -1,0 +1,11 @@
+div
+  .about
+    .about-header.container
+      h1.title Блок "Обо мне"
+      button(type="button" @click="addCategoryCard").add-btn.text
+        .circle-add-btn
+          SvgIcon(name="plus" className="add-btn-icon")
+        | Добавить группу
+    .about-content.container
+      .card-list
+        Category(:key="cat.id" v-for="cat in categories" :cat="cat")

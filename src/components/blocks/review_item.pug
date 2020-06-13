@@ -1,10 +1,10 @@
-.review-item
+.review-item(class=reviewItem.class && reviewItem.class)
     +icon("quote", "review-item__quote-icon")
     .review-item__card
         .review-item__text
-            p #{author[3]}
+            p #{reviewItem.message}
         .review-item__author
-            +image(author[0], "avatar review-item__avatar")
+            +image(reviewItem.avatar, "avatar review-item__avatar")
             .review-item__author-info
-                .review-item__author-name #{author[1]}
-                .review-item__author-position #{author[2]}
+                .review-item__author-name #{reviewItem.author.name}
+                .review-item__author-position #{reviewItem.author.position}

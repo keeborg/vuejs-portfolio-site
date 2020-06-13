@@ -1,3 +1,128 @@
-.welcome-section {
+.welcome-sections {
     position: relative;
+}
+
+.welcome-sections__parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 100%;
+    height: 100vh;
+    .tabs-phones-bg {
+        min-width: 4200px;
+        transform: translate(-30%, 0);
+        .parallax__image {
+            max-height: 255vh;
+        }
+    }
+}
+
+.parallax__layer {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.sky {
+    width: 100%;
+    .parallax__image {
+        height: auto;
+    }
+    @include desktop-tabs {
+        width: 260%;
+        min-width: 900px;
+    }
+    @include tablets {
+        min-width: 2000px;
+    }
+}
+
+.baloon-prlx {
+    right: -65%;
+    transform: translate(0, 45%);
+    .parallax__image {
+        width: 150px;
+    }
+}
+
+.cloud-prlx {
+    transform: translate(0, 43%);
+    .parallax__image {
+        width: 100%;
+    }
+    @include tablets {
+        width: 110%;
+    }
+    @include tablets {
+        min-width: 1500px;
+    }
+}
+
+.mountain-prlx {
+    width: 100%;
+    transform: translate(0, 21%);
+    min-width: 1300px;
+    .parallax__image {
+        width: 100%;
+        @include tablets {
+            min-width: 150%;
+        }
+    }
+    
+    
+}
+
+.man-prlx {
+    left: 0;
+    transform: translate(0, 68%);
+    min-width: 1400px;
+    .parallax__image {
+        width: 75%;
+    }
+    @include desktop-tabs {
+        transform: translate(-300px, 50vh);
+    }
+}
+
+.mountain1-prlx {
+    width: 160%;
+    right: 0;
+    min-width: 1800px;
+    transform: translate(0, 60%);
+    .parallax__image {
+        margin-left: auto;
+        min-height: 100vh;
+    }
+    @include desktop {
+        transform-origin: 0 -35%;
+        transform: translate(0, 50%);
+    }
+    @include desktop-tabs {
+        width: 100%;
+    }
+}
+
+.white-prlx {
+    min-width: 135%;
+    top: 75%;
+    .parallax__image {
+        width: 100%;
+        min-width: 1500px;
+        @include desktop-tabs {
+            min-width: 150%;
+        }
+    }
+    @include desktop {
+        top: 85%;
+    }
+    @include desktop-tabs {
+        min-width: 150%;
+    }
+    @include tablets {
+        width: 280%;
+        .parallax__image {
+            height: 100vh;
+        }
+    }
 }

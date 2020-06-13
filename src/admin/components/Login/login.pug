@@ -1,0 +1,29 @@
+.login-wrapper
+  .overlay
+  .auth-wrapper
+    button(type="button").close-btn
+      SvgIcon(name="remove" className="close-btn-icon")
+    form.auth
+      .title Авторизация
+      .login-input.input__wrapper(:class="{ 'error': $v.user.name.$error }")
+        label.input__title Логин
+        .input__block
+            SvgIcon(name="user" className="input__icon")
+            input(
+              v-model.trim="user.name"
+              type="text"
+              placeholder="Введите логин"
+            ).input__text-type.input
+        .error-msg(v-if="!$v.user.name.required && $v.user.name.$dirty") Обязательное поле
+      .password-input.input__wrapper(:class="{ 'error': $v.user.password.$error }")
+        label.input__title Пароль
+        .input__block
+            SvgIcon(name="key" className="input__icon")
+            input(
+              v-model="user.password"
+              type="password"
+              placeholder="Введите пароль"
+            ).input__text-type.input
+        .error-msg(v-if="!$v.user.password.required && $v.user.password.$dirty") Обязательное поле
+      button(type="submit" @click.prevent="login" :disabled="user.name=='' || user.password==''").submit-btn Отправить
+            
