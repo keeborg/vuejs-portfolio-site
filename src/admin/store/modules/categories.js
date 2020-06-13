@@ -97,7 +97,6 @@ export default {
         async addSkill(context, newSkill) {
             try {
                 const response = await this.$axios.post('/skills', {...newSkill});
-                console.log(response);
                 context.commit('ADD_SKILL', response.data);
                 return response;
             } catch (error) {
